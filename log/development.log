@@ -1,0 +1,1146 @@
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (131.3ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (1.0ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (389.1ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateUsers (20120518204732)
+  [1m[35mSQL (199.9ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255), `password_hash` varchar(255), `password_salt` varchar(255), `admin` tinyint(1), `user_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120518204732')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (3.0ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateUsers (20120518204732)
+Migrating to AddAuthTokenToUsers (20120518205900)
+  [1m[35mSQL (95.9ms)[0m  ALTER TABLE `users` ADD `auth_token` varchar(255)
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120518205900')[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (2.3ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateUsers (20120518204732)
+Migrating to AddAuthTokenToUsers (20120518205900)
+Migrating to AddPasswordResetToUsers (20120518205919)
+  [1m[35mSQL (147.1ms)[0m  ALTER TABLE `users` ADD `password_reset_token` varchar(255)
+  [1m[36mSQL (251.3ms)[0m  [1mALTER TABLE `users` ADD `password_reset_sent_at` datetime[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120518205919')
+Migrating to AddActiveToUsers (20120518210459)
+  [1m[36mSQL (123.8ms)[0m  [1mALTER TABLE `users` ADD `active` tinyint(1) DEFAULT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120518210459')
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations`
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (2.6ms)[0m  describe `users`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `users`[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /Users/Ben/Desktop/Work/SideWork/ami/config/initializers/setup_mail.rb:1)
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateUsers (20120518204732)
+Migrating to AddAuthTokenToUsers (20120518205900)
+Migrating to AddPasswordResetToUsers (20120518205919)
+Migrating to AddActiveToUsers (20120518210459)
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (2.8ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /Users/Ben/Desktop/Work/SideWork/ami/config/initializers/setup_mail.rb:1)
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:22:20 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (39.5ms)
+Completed 500 Internal Server Error in 80ms
+
+ActionView::Template::Error (undefined local variable or method `current_user' for #<#<Class:0x1037bce70>:0x1037b6368>):
+    12: <body>
+    13: 
+    14: <div id="user_nav">
+    15:   <% if current_user %>
+    16:     Logged in as <%= current_user.email %>.
+    17:     <%= link_to "Log out", log_out_path %>
+    18:   <% else %>
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb___591197627_2176680460_0'
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.4ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:24:25 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (8.0ms)
+Completed 500 Internal Server Error in 86ms
+
+ActionView::Template::Error (undefined local variable or method `current_user' for #<#<Class:0x103386270>:0x103383908>):
+    12: <body>
+    13: 
+    14: <div id="user_nav">
+    15:   <% if current_user %>
+    16:     Logged in as <%= current_user.email %>.
+    17:     <%= link_to "Log out", log_out_path %>
+    18:   <% else %>
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb___591197627_2174485620_0'
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.9ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:32:53 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (11.5ms)
+Completed 500 Internal Server Error in 42ms
+
+ActionView::Template::Error (undefined local variable or method `current_user' for #<#<Class:0x1037111b0>:0x10370b8c8>):
+    12: <body>
+    13: 
+    14: <div id="user_nav">
+    15:   <% if current_user %>
+    16:     Logged in as <%= current_user.email %>.
+    17:     <%= link_to "Log out", log_out_path %>
+    18:   <% else %>
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb___591197627_2176298680_0'
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.1ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.6ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /Users/Ben/Desktop/Work/SideWork/ami/config/initializers/setup_mail.rb:1)
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:33:32 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (16.1ms)
+Completed 500 Internal Server Error in 31ms
+
+ActionView::Template::Error (undefined local variable or method `current_user' for #<#<Class:0x1037bc448>:0x1037b5df0>):
+    12: <body>
+    13: 
+    14: <div id="user_nav">
+    15:   <% if current_user %>
+    16:     Logged in as <%= current_user.email %>.
+    17:     <%= link_to "Log out", log_out_path %>
+    18:   <% else %>
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb___591197627_2176679540_0'
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.1ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:35:41 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (8.6ms)
+Completed 500 Internal Server Error in 87ms
+
+ActionView::Template::Error (undefined local variable or method `current_user' for #<#<Class:0x1033866a8>:0x103383d18>):
+    12: <body>
+    13: 
+    14: <div id="user_nav">
+    15:   <% if !current_user.nil? %>
+    16:     Logged in as <%= current_user.email %>.
+    17:     <%= link_to "Log out", log_out_path %>
+    18:   <% else %>
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb___591197627_2174486160_0'
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:36:19 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 8ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at Fri May 18 14:36:24 -0700 2012
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (91.0ms)
+Rendered users/new.html.erb within layouts/application (178.6ms)
+Completed 500 Internal Server Error in 326ms
+
+ActionView::Template::Error (undefined method `f' for #<ActionView::Helpers::FormBuilder:0x10344ae40>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :password_hash %><br />
+    20:     <%= f.f.password_field :password_hash %>
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :password_salt %><br />
+  app/views/users/_form.html.erb:20:in `_app_views_users__form_html_erb__1084737285_2175310580_897470'
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb__1084737285_2175310580_897470'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___373674645_2175337860_0'
+  app/controllers/users_controller.rb:32:in `new'
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.8ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (19.2ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at Fri May 18 14:36:52 -0700 2012
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (19.6ms)
+Rendered users/new.html.erb within layouts/application (94.5ms)
+Completed 500 Internal Server Error in 117ms
+
+ActionView::Template::Error (undefined method `f' for #<ActionView::Helpers::FormBuilder:0x103481508>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :password_hash %><br />
+    20:     <%= f.f.password_field :password_hash %>
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :password_salt %><br />
+  app/views/users/_form.html.erb:20:in `_app_views_users__form_html_erb__1084737285_2175386260_897470'
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb__1084737285_2175386260_897470'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___373674645_2175422840_0'
+  app/controllers/users_controller.rb:32:in `new'
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.9ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.5ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at Fri May 18 14:37:05 -0700 2012
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (11.4ms)
+Rendered users/new.html.erb within layouts/application (13.5ms)
+Completed 500 Internal Server Error in 27ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 2)):
+    25:   </div>
+    26:   <div class="field">
+    27:     <%= f.label :user_type %><br />
+    28:     <%= f.select [['User', 'User'], ['Contributor','Contributor']] %>
+    29:   </div>
+    30:   <div class="actions">
+    31:     <%= f.submit %>
+  app/views/users/_form.html.erb:28:in `select'
+  app/views/users/_form.html.erb:28:in `_app_views_users__form_html_erb__1084737285_2175285020_897470'
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb__1084737285_2175285020_897470'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___373674645_2175337340_0'
+  app/controllers/users_controller.rb:32:in `new'
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (69.4ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (75.8ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at Fri May 18 14:38:14 -0700 2012
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (12.1ms)
+Rendered users/new.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 32ms (Views: 22.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at Fri May 18 14:42:44 -0700 2012
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (11.7ms)
+Rendered users/new.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 72ms (Views: 23.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Fri May 18 14:43:14 -0700 2012
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "user_type"=>"User", "password"=>"[FILTERED]", "email"=>"benhall2121@yahoo.com"}}
+WARNING: Can't mass-assign protected attributes: user_type
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (73.9ms)[0m  SELECT 1 FROM `users` WHERE (`users`.`email` = BINARY 'benhall2121@yahoo.com') LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT 1 FROM `users` WHERE `users`.`auth_token` = 'RTAkOEcCQfY9BKsCz4BGGg==' LIMIT 1
+  [1m[36mSQL (3.2ms)[0m  [1mdescribe `users`[0m
+  [1m[35mAREL (30.2ms)[0m  INSERT INTO `users` (`active`, `admin`, `email`, `updated_at`, `password_hash`, `password_reset_sent_at`, `auth_token`, `user_type`, `password_reset_token`, `created_at`, `password_salt`) VALUES (1, NULL, 'benhall2121@yahoo.com', '2012-05-18 21:43:15', '$2a$10$57DpVMaUyPUCflyIqfgxOufWmK.kjaGGTURUbac.ZnYJjj7s0Ectu', NULL, 'RTAkOEcCQfY9BKsCz4BGGg==', NULL, NULL, '2012-05-18 21:43:15', '$2a$10$57DpVMaUyPUCflyIqfgxOu')
+  [1m[36mSQL (34.6ms)[0m  [1mCOMMIT[0m
+Rendered ami_mailer/new_signup_email.html.erb (0.6ms)
+
+Sent mail to benhall2121@yahoo.com (18ms)
+Date: Fri, 18 May 2012 14:43:16 -0700
+To: benhall2121@yahoo.com
+Message-ID: <4fb6c2742f4ac_99f819c48a854257@benjamin-halls-macbook.local.mail>
+Subject: Welcome to AMI
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+
+<body style="padding: 0 0 10px 0;">
+
+
+<div class="header" style="padding:5px;background-color:black;">
+  <div class="small_logo_wrapper" >
+    <a href="http://localhost:3000" style="color:#FFFFFF;text-decoration: none;">AMI</a>
+  </div>
+</div>
+
+<div class="not_header_wrapper" style="background-image:url('http://www.skrittle.com/images/small_240.jpg');background-repeat: repeat-x;padding-top:10px;">
+  <div id="position" style="width: 70%;margin:0 auto;text-align: center;background-color:#F0F0F0;padding:5px;border:1px solid gray;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;">
+    <div class="logo_wrapper">
+      <div class="image_or_name" style="font: 80px 'Times New Roman';float:center;margin:0;padding:0;">
+        <a href="http://localhost:3000" style="color: #BA1820;text-shadow: 2px 1px 1px #666;text-decoration: none;">AMI</a> 
+      </div>
+    </div>
+
+    <div style="text-align:left; margin-top:7px; padding:5px;">
+      Thanks for signing up for AMI! We are EXCITED to have you. 
+      <br/>
+      <br/>
+      The Awesome AMI Team. 
+    </div>
+    
+  </div>  
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 1532ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:43:16 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'RTAkOEcCQfY9BKsCz4BGGg==' LIMIT 1
+Rendered users/home.html.erb within layouts/application (48.2ms)
+Completed 200 OK in 54ms (Views: 53.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at Fri May 18 14:45:29 -0700 2012
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:45:29 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 75ms (Views: 74.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at Fri May 18 14:45:31 -0700 2012
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (11.9ms)
+Rendered users/new.html.erb within layouts/application (16.8ms)
+Completed 200 OK in 140ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Fri May 18 14:48:23 -0700 2012
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "user_type"=>"User", "password"=>"[FILTERED]", "email"=>"benhall2121@yahoo.com"}}
+WARNING: Can't mass-assign protected attributes: user_type
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (24.7ms)[0m  SELECT 1 FROM `users` WHERE (`users`.`email` = BINARY 'benhall2121@yahoo.com') LIMIT 1
+  [1m[36mSQL (6.2ms)[0m  [1mROLLBACK[0m
+Rendered users/_form.html.erb (9.6ms)
+Rendered users/new.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 230ms (Views: 53.0ms | ActiveRecord: 31.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at Fri May 18 14:49:32 -0700 2012
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "user_type"=>"User", "password"=>"[FILTERED]", "email"=>"benhall2121@yahoo.com"}}
+WARNING: Can't mass-assign protected attributes: user_type
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT 1 FROM `users` WHERE (`users`.`email` = BINARY 'benhall2121@yahoo.com') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT 1 FROM `users` WHERE `users`.`auth_token` = 'gm5HGxE6cUsGGJOI84Udvg==' LIMIT 1
+  [1m[36mSQL (2.9ms)[0m  [1mdescribe `users`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `users` (`auth_token`, `password_reset_token`, `password_reset_sent_at`, `user_type`, `updated_at`, `password_hash`, `password_salt`, `email`, `active`, `admin`, `created_at`) VALUES ('gm5HGxE6cUsGGJOI84Udvg==', NULL, NULL, NULL, '2012-05-18 21:49:32', '$2a$10$8wvkjcoP4NZwIJ8XqyIeW.dwoF0b8q1zjTvAva1pTpN8spRRm4nru', '$2a$10$8wvkjcoP4NZwIJ8XqyIeW.', 'benhall2121@yahoo.com', 1, NULL, '2012-05-18 21:49:32')
+  [1m[36mSQL (0.8ms)[0m  [1mCOMMIT[0m
+Rendered ami_mailer/new_signup_email.html.erb (0.6ms)
+
+Sent mail to benhall2121@yahoo.com (6ms)
+Date: Fri, 18 May 2012 14:49:32 -0700
+To: benhall2121@yahoo.com
+Message-ID: <4fb6c3ec33e44_99f819d7c0054327@benjamin-halls-macbook.local.mail>
+Subject: Welcome to AMI
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+
+<body style="padding: 0 0 10px 0;">
+
+
+<div class="header" style="padding:5px;background-color:black;">
+  <div class="small_logo_wrapper" >
+    <a href="http://localhost:3000" style="color:#FFFFFF;text-decoration: none;">AMI</a>
+  </div>
+</div>
+
+<div class="not_header_wrapper" style="background-image:url('http://www.skrittle.com/images/small_240.jpg');background-repeat: repeat-x;padding-top:10px;">
+  <div id="position" style="width: 70%;margin:0 auto;text-align: center;background-color:#F0F0F0;padding:5px;border:1px solid gray;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;">
+    <div class="logo_wrapper">
+      <div class="image_or_name" style="font: 80px 'Times New Roman';float:center;margin:0;padding:0;">
+        <a href="http://localhost:3000" style="color: #BA1820;text-shadow: 2px 1px 1px #666;text-decoration: none;">AMI</a> 
+      </div>
+    </div>
+
+    <div style="text-align:left; margin-top:7px; padding:5px;">
+      Thanks for signing up for AMI! We are EXCITED to have you. 
+      <br/>
+      <br/>
+      The Awesome AMI Team. 
+    </div>
+    
+  </div>  
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 139ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:49:32 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'gm5HGxE6cUsGGJOI84Udvg==' LIMIT 1
+Rendered users/home.html.erb within layouts/application (99.7ms)
+Completed 200 OK in 105ms (Views: 104.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at Fri May 18 14:51:09 -0700 2012
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:51:09 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at Fri May 18 14:51:19 -0700 2012
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (12.0ms)
+Rendered users/new.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 89ms (Views: 25.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Fri May 18 14:51:29 -0700 2012
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "user_type"=>"User", "password"=>"[FILTERED]", "email"=>"benhall2121@yahoo.com"}}
+WARNING: Can't mass-assign protected attributes: user_type
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT 1 FROM `users` WHERE (`users`.`email` = BINARY 'benhall2121@yahoo.com') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT 1 FROM `users` WHERE `users`.`auth_token` = 'BI-qYTt2FoXGVBoAMp0gow==' LIMIT 1[0m
+  [1m[35mSQL (2.8ms)[0m  describe `users`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `users` (`active`, `updated_at`, `auth_token`, `created_at`, `password_reset_token`, `password_hash`, `admin`, `password_reset_sent_at`, `password_salt`, `user_type`, `email`) VALUES (1, '2012-05-18 21:51:29', 'BI-qYTt2FoXGVBoAMp0gow==', '2012-05-18 21:51:29', NULL, '$2a$10$gHdlKylCeav6IM6NexxBkuUsHwoKE.HsrawpABJVqjObT7aHyaeH6', NULL, NULL, '$2a$10$gHdlKylCeav6IM6NexxBku', NULL, 'benhall2121@yahoo.com')[0m
+  [1m[35mSQL (0.7ms)[0m  COMMIT
+Rendered ami_mailer/new_signup_email.html.erb (0.6ms)
+
+Sent mail to benhall2121@yahoo.com (6ms)
+Date: Fri, 18 May 2012 14:51:29 -0700
+To: benhall2121@yahoo.com
+Message-ID: <4fb6c46186d11_99f81978674544d8@benjamin-halls-macbook.local.mail>
+Subject: Welcome to AMI
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+
+<body style="padding: 0 0 10px 0;">
+
+
+<div class="header" style="padding:5px;background-color:black;">
+  <div class="small_logo_wrapper" >
+    <a href="http://localhost:3000" style="color:#FFFFFF;text-decoration: none;">AMI</a>
+  </div>
+</div>
+
+<div class="not_header_wrapper" style="background-image:url('http://www.skrittle.com/images/small_240.jpg');background-repeat: repeat-x;padding-top:10px;">
+  <div id="position" style="width: 70%;margin:0 auto;text-align: center;background-color:#F0F0F0;padding:5px;border:1px solid gray;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;">
+    <div class="logo_wrapper">
+      <div class="image_or_name" style="font: 80px 'Times New Roman';float:center;margin:0;padding:0;">
+        <a href="http://localhost:3000" style="color: #BA1820;text-shadow: 2px 1px 1px #666;text-decoration: none;">AMI</a> 
+      </div>
+    </div>
+
+    <div style="text-align:left; margin-top:7px; padding:5px;">
+      Thanks for signing up for AMI! We are EXCITED to have you. 
+      <br/>
+      <br/>
+      The Awesome AMI Team. 
+    </div>
+    
+  </div>  
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 289ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:51:29 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'BI-qYTt2FoXGVBoAMp0gow==' LIMIT 1[0m
+Rendered users/home.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 30ms (Views: 28.8ms | ActiveRecord: 0.3ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /Users/Ben/Desktop/Work/SideWork/ami/config/initializers/setup_mail.rb:1)
+
+
+Started GET "/log_out" for 127.0.0.1 at Fri May 18 14:55:25 -0700 2012
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:55:26 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at Fri May 18 14:55:31 -0700 2012
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (83.6ms)
+Rendered users/new.html.erb within layouts/application (89.7ms)
+Completed 200 OK in 105ms (Views: 95.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Fri May 18 14:55:40 -0700 2012
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "user_type"=>"User", "password"=>"[FILTERED]", "email"=>"benhall2121@yahoo.com"}}
+WARNING: Can't mass-assign protected attributes: user_type
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT 1 FROM `users` WHERE (`users`.`email` = BINARY 'benhall2121@yahoo.com') LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT 1 FROM `users` WHERE `users`.`auth_token` = 'JzMcjokMSD7-Sby0O6QDlg==' LIMIT 1
+  [1m[36mSQL (2.6ms)[0m  [1mdescribe `users`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `users` (`email`, `admin`, `created_at`, `password_hash`, `password_reset_sent_at`, `password_salt`, `active`, `auth_token`, `user_type`, `password_reset_token`, `updated_at`) VALUES ('benhall2121@yahoo.com', NULL, '2012-05-18 21:55:41', '$2a$10$DcKaBD/BGHHrDloRY3JX3ebYpbkGEnfUtsMrPdlkahGnJ3qL7EZci', NULL, '$2a$10$DcKaBD/BGHHrDloRY3JX3e', 1, 'JzMcjokMSD7-Sby0O6QDlg==', NULL, NULL, '2012-05-18 21:55:41')
+  [1m[36mSQL (9.9ms)[0m  [1mCOMMIT[0m
+Rendered ami_mailer/new_signup_email.html.erb (0.6ms)
+
+Sent mail to benhall2121@yahoo.com (18ms)
+Date: Fri, 18 May 2012 14:55:41 -0700
+To: benhall2121@yahoo.com
+Message-ID: <4fb6c55d36a0b_9f381b849b8119a2@benjamin-halls-macbook.local.mail>
+Subject: Welcome to AMI
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+
+<body style="padding: 0 0 10px 0;">
+
+
+<div class="header" style="padding:5px;background-color:black;">
+  <div class="small_logo_wrapper" >
+    <a href="http://localhost:3000" style="color:#FFFFFF;text-decoration: none;">AMI</a>
+  </div>
+</div>
+
+<div class="not_header_wrapper" style="background-image:url('http://www.skrittle.com/images/small_240.jpg');background-repeat: repeat-x;padding-top:10px;">
+  <div id="position" style="width: 70%;margin:0 auto;text-align: center;background-color:#F0F0F0;padding:5px;border:1px solid gray;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;">
+    <div class="logo_wrapper">
+      <div class="image_or_name" style="font: 80px 'Times New Roman';float:center;margin:0;padding:0;">
+        <a href="http://localhost:3000" style="color: #BA1820;text-shadow: 2px 1px 1px #666;text-decoration: none;">AMI</a> 
+      </div>
+    </div>
+
+    <div style="text-align:left; margin-top:7px; padding:5px;">
+      Thanks for signing up for AMI! We are EXCITED to have you. 
+      <br/>
+      <br/>
+      The Awesome AMI Team. 
+    </div>
+    
+  </div>  
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 421ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 14:55:41 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'JzMcjokMSD7-Sby0O6QDlg==' LIMIT 1
+Rendered users/home.html.erb within layouts/application (22.4ms)
+Completed 200 OK in 28ms (Views: 27.3ms | ActiveRecord: 0.3ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /Users/Ben/Desktop/Work/SideWork/ami/config/initializers/setup_mail.rb:1)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /Users/Ben/Desktop/Work/SideWork/ami/config/initializers/setup_mail.rb:1)
+
+
+Started GET "/log_out" for 127.0.0.1 at Fri May 18 15:00:30 -0700 2012
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:00:30 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 9ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at Fri May 18 15:00:32 -0700 2012
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (65.0ms)
+Rendered users/new.html.erb within layouts/application (71.1ms)
+Completed 200 OK in 139ms (Views: 79.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Fri May 18 15:00:42 -0700 2012
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "user_type"=>"User", "password"=>"[FILTERED]", "email"=>"benhall2121@yahoo.com"}}
+WARNING: Can't mass-assign protected attributes: user_type
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT 1 FROM `users` WHERE (`users`.`email` = BINARY 'benhall2121@yahoo.com') LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT 1 FROM `users` WHERE `users`.`auth_token` = '8lmhkZEVIYm_O62tSxq97A==' LIMIT 1
+  [1m[36mSQL (3.0ms)[0m  [1mdescribe `users`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `users` (`active`, `password_hash`, `password_reset_sent_at`, `password_salt`, `admin`, `created_at`, `password_reset_token`, `updated_at`, `auth_token`, `user_type`, `email`) VALUES (1, '$2a$10$TSaVR6Q/vNQ7VovDesf8WOlku/EDcc03059LBnrZswn9e/ELG861W', NULL, '$2a$10$TSaVR6Q/vNQ7VovDesf8WO', NULL, '2012-05-18 22:00:42', NULL, '2012-05-18 22:00:42', '8lmhkZEVIYm_O62tSxq97A==', NULL, 'benhall2121@yahoo.com')
+  [1m[36mSQL (0.8ms)[0m  [1mCOMMIT[0m
+Rendered ami_mailer/new_signup_email.html.erb (0.6ms)
+
+Sent mail to benhall2121@yahoo.com (394ms)
+Date: Fri, 18 May 2012 15:00:42 -0700
+To: benhall2121@yahoo.com
+Message-ID: <4fb6c68a8d346_a0281b7f080224a6@benjamin-halls-macbook.local.mail>
+Subject: Welcome to AMI
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+
+<body style="padding: 0 0 10px 0;">
+
+
+<div class="header" style="padding:5px;background-color:black;">
+  <div class="small_logo_wrapper" >
+    <a href="http://localhost:3000" style="color:#FFFFFF;text-decoration: none;">AMI</a>
+  </div>
+</div>
+
+<div class="not_header_wrapper" style="background-image:url('http://www.skrittle.com/images/small_240.jpg');background-repeat: repeat-x;padding-top:10px;">
+  <div id="position" style="width: 70%;margin:0 auto;text-align: center;background-color:#F0F0F0;padding:5px;border:1px solid gray;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;">
+    <div class="logo_wrapper">
+      <div class="image_or_name" style="font: 80px 'Times New Roman';float:center;margin:0;padding:0;">
+        <a href="http://localhost:3000" style="color: #BA1820;text-shadow: 2px 1px 1px #666;text-decoration: none;">AMI</a> 
+      </div>
+    </div>
+
+    <div style="text-align:left; margin-top:7px; padding:5px;">
+      Thanks for signing up for AMI! We are EXCITED to have you. 
+      <br/>
+      <br/>
+      The Awesome AMI Team. 
+    </div>
+    
+  </div>  
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 835ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:00:42 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = '8lmhkZEVIYm_O62tSxq97A==' LIMIT 1
+Rendered users/home.html.erb within layouts/application (91.6ms)
+Completed 200 OK in 104ms (Views: 102.7ms | ActiveRecord: 0.5ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /Users/Ben/Desktop/Work/SideWork/ami/config/initializers/setup_mail.rb:1)
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:02:29 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = '8lmhkZEVIYm_O62tSxq97A==' LIMIT 1
+Rendered users/home.html.erb within layouts/application (124.4ms)
+Completed 200 OK in 131ms (Views: 130.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at Fri May 18 15:02:31 -0700 2012
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:02:31 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 9ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at Fri May 18 15:02:38 -0700 2012
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (14.7ms)
+Rendered users/new.html.erb within layouts/application (19.8ms)
+Completed 200 OK in 35ms (Views: 25.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Fri May 18 15:02:48 -0700 2012
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "user_type"=>"User", "password"=>"[FILTERED]", "email"=>"benhall2121@yahoo.com"}}
+WARNING: Can't mass-assign protected attributes: user_type
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT 1 FROM `users` WHERE (`users`.`email` = BINARY 'benhall2121@yahoo.com') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM `users` WHERE `users`.`auth_token` = 'RybBULAvFqOcTzf6oG7Urw==' LIMIT 1[0m
+  [1m[35mSQL (2.7ms)[0m  describe `users`
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO `users` (`password_hash`, `password_salt`, `password_reset_token`, `auth_token`, `admin`, `user_type`, `updated_at`, `password_reset_sent_at`, `created_at`, `email`, `active`) VALUES ('$2a$10$8SxzpCBDIVMzcvPHGtXKyuo/uWL5yoQikNheconpCPrw7OgBe0oqi', '$2a$10$8SxzpCBDIVMzcvPHGtXKyu', NULL, 'RybBULAvFqOcTzf6oG7Urw==', NULL, NULL, '2012-05-18 22:02:49', NULL, '2012-05-18 22:02:49', 'benhall2121@yahoo.com', 1)[0m
+  [1m[35mSQL (0.8ms)[0m  COMMIT
+Rendered ami_mailer/new_signup_email.html.erb (0.6ms)
+
+Sent mail to benhall2121@yahoo.com (14ms)
+Date: Fri, 18 May 2012 15:02:49 -0700
+To: benhall2121@yahoo.com
+Message-ID: <4fb6c709230be_a108193b5e48986e@benjamin-halls-macbook.local.mail>
+Subject: Welcome to AMI
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+
+<body style="padding: 0 0 10px 0;">
+
+
+<div class="header" style="padding:5px;background-color:black;">
+  <div class="small_logo_wrapper" >
+    <a href="http://localhost:3000" style="color:#FFFFFF;text-decoration: none;">AMI</a>
+  </div>
+</div>
+
+<div class="not_header_wrapper" style="background-image:url('http://www.skrittle.com/images/small_240.jpg');background-repeat: repeat-x;padding-top:10px;">
+  <div id="position" style="width: 70%;margin:0 auto;text-align: center;background-color:#F0F0F0;padding:5px;border:1px solid gray;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;">
+    <div class="logo_wrapper">
+      <div class="image_or_name" style="font: 80px 'Times New Roman';float:center;margin:0;padding:0;">
+        <a href="http://localhost:3000" style="color: #BA1820;text-shadow: 2px 1px 1px #666;text-decoration: none;">AMI</a> 
+      </div>
+    </div>
+
+    <div style="text-align:left; margin-top:7px; padding:5px;">
+      Thanks for signing up for AMI! We are EXCITED to have you. 
+      <br/>
+      <br/>
+      The Awesome AMI Team. 
+    </div>
+    
+  </div>  
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+
+Completed 500 Internal Server Error in 265ms
+
+ArgumentError (A sender (Return-Path, Sender or From) required to send a message):
+  app/controllers/users_controller.rb:50:in `create'
+  app/controllers/users_controller.rb:48:in `create'
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.7ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.1ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at Fri May 18 15:04:05 -0700 2012
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (12.9ms)
+Rendered users/new.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 33ms (Views: 23.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Fri May 18 15:04:11 -0700 2012
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"Create User", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "user_type"=>"User", "password"=>"[FILTERED]", "email"=>"benhall2121@yahoo.com"}}
+WARNING: Can't mass-assign protected attributes: user_type
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT 1 FROM `users` WHERE (`users`.`email` = BINARY 'benhall2121@yahoo.com') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+  [1m[35mSQL (2.7ms)[0m  describe `users`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `users` (`password_salt`, `updated_at`, `password_reset_sent_at`, `user_type`, `password_hash`, `auth_token`, `email`, `active`, `password_reset_token`, `created_at`, `admin`) VALUES ('$2a$10$ZEQaw5MlpmG49nDjhPh75.', '2012-05-18 22:04:11', NULL, NULL, '$2a$10$ZEQaw5MlpmG49nDjhPh75.xBxqd84zYEjF4zwdx1RGH9vBtKiE.SO', 'aaOgRlnO9eYdvgmuyOhNZA==', 'benhall2121@yahoo.com', 1, NULL, '2012-05-18 22:04:11', NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  COMMIT
+Rendered ami_mailer/new_signup_email.html.erb (0.7ms)
+
+Sent mail to benhall2121@yahoo.com (3676ms)
+Date: Fri, 18 May 2012 15:04:11 -0700
+From: Website@benerino.com
+To: benhall2121@yahoo.com
+Message-ID: <4fb6c75bda511_a10818a4acc8994e@benjamin-halls-macbook.local.mail>
+Subject: Welcome to AMI
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+
+<body style="padding: 0 0 10px 0;">
+
+
+<div class="header" style="padding:5px;background-color:black;">
+  <div class="small_logo_wrapper" >
+    <a href="http://localhost:3000" style="color:#FFFFFF;text-decoration: none;">AMI</a>
+  </div>
+</div>
+
+<div class="not_header_wrapper" style="background-image:url('http://www.skrittle.com/images/small_240.jpg');background-repeat: repeat-x;padding-top:10px;">
+  <div id="position" style="width: 70%;margin:0 auto;text-align: center;background-color:#F0F0F0;padding:5px;border:1px solid gray;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;">
+    <div class="logo_wrapper">
+      <div class="image_or_name" style="font: 80px 'Times New Roman';float:center;margin:0;padding:0;">
+        <a href="http://localhost:3000" style="color: #BA1820;text-shadow: 2px 1px 1px #666;text-decoration: none;">AMI</a> 
+      </div>
+    </div>
+
+    <div style="text-align:left; margin-top:7px; padding:5px;">
+      Thanks for signing up for AMI! We are EXCITED to have you. 
+      <br/>
+      <br/>
+      The Awesome AMI Team. 
+    </div>
+    
+  </div>  
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 3852ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:04:15 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/home.html.erb within layouts/application (23.0ms)
+Completed 200 OK in 28ms (Views: 27.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at Fri May 18 15:04:47 -0700 2012
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:04:47 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/log_in" for 127.0.0.1 at Fri May 18 15:04:49 -0700 2012
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (101.9ms)
+Completed 500 Internal Server Error in 124ms
+
+ActionView::Template::Error (undefined local variable or method `new_password_reset_path' for #<#<Class:0x1030d3af0>:0x1030d1ea8>):
+    10:     <%= label_tag :password %><br />
+    11:     <%= password_field_tag :password %>
+    12:   </p>
+    13:   <p><%= link_to "forgotten password?", new_password_reset_path %></p>
+    14:   <p>
+    15:     <%= check_box_tag :remember_me, 1, params[:remember_me] %><br />
+    16:     <%= label_tag :remember_me %>
+  app/views/sessions/new.html.erb:13:in `_app_views_sessions_new_html_erb__2084105226_2173076140_0'
+  app/views/sessions/new.html.erb:4:in `_app_views_sessions_new_html_erb__2084105226_2173076140_0'
+
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.2ms)
+Rendered /Users/Ben/.rvm/gems/ruby-1.8.7-p352/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (19.7ms)
+
+
+Started GET "/log_in" for 127.0.0.1 at Fri May 18 15:05:49 -0700 2012
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 80ms (Views: 79.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at Fri May 18 15:06:00 -0700 2012
+  Processing by SessionsController#create as HTML
+  Parameters: {"commit"=>"Log in", "remember_me"=>"1", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "password"=>"[FILTERED]", "email"=>"benhall2121@yahoo.com"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`email` = 'benhall2121@yahoo.com' LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 104ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:06:00 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/home.html.erb within layouts/application (21.8ms)
+Completed 200 OK in 27ms (Views: 26.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at Fri May 18 15:06:02 -0700 2012
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:06:02 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/log_in" for 127.0.0.1 at Fri May 18 15:06:03 -0700 2012
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/password_resets/new" for 127.0.0.1 at Fri May 18 15:06:05 -0700 2012
+  Processing by PasswordResetsController#new as HTML
+Rendered password_resets/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/password_resets" for 127.0.0.1 at Fri May 18 15:06:12 -0700 2012
+  Processing by PasswordResetsController#create as HTML
+  Parameters: {"commit"=>"Reset Password", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "email"=>"benhall2121@yahoo.com"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`email` = 'benhall2121@yahoo.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT 1 FROM `users` WHERE `users`.`password_reset_token` = 'zAKRc6rL8u21v4mKLSIUCQ==' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (43.1ms)[0m  [1mSELECT 1 FROM `users` WHERE (`users`.`email` = BINARY 'benhall2121@yahoo.com') AND (`users`.id <> 7) LIMIT 1[0m
+  [1m[35mAREL (22.2ms)[0m  UPDATE `users` SET `password_reset_token` = 'zAKRc6rL8u21v4mKLSIUCQ==', `password_reset_sent_at` = '2012-05-18 22:06:12', `updated_at` = '2012-05-18 22:06:12' WHERE `users`.`id` = 7
+  [1m[36mSQL (0.9ms)[0m  [1mCOMMIT[0m
+Rendered ami_mailer/password_reset.html.erb (1.4ms)
+
+Sent mail to benhall2121@yahoo.com (10490ms)
+Date: Fri, 18 May 2012 15:06:12 -0700
+From: Website@benerino.com
+To: benhall2121@yahoo.com
+Message-ID: <4fb6c7d4bbd8f_a1081c0762490049@benjamin-halls-macbook.local.mail>
+Subject: AMI Password Reset
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+
+<body style="padding: 0 0 10px 0;">
+
+
+<div class="header" style="padding:5px;background-color:black;">
+  <div class="small_logo_wrapper" >
+    <a href="http://localhost:3000" style="color:#FFFFFF;text-decoration: none;">AMI</a>
+  </div>
+</div>
+
+<div class="not_header_wrapper" style="background-image:url('http://www.skrittle.com/images/small_240.jpg');background-repeat: repeat-x;padding-top:10px;">
+  <div id="position" style="width: 70%;margin:0 auto;text-align: center;background-color:#F0F0F0;padding:5px;border:1px solid gray;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;min-height:275px;">
+    <div class="logo_wrapper">
+      <div class="image_or_name" style="font: 80px 'Times New Roman';float:center;margin:0;padding:0;">
+        <a href="http://localhost:3000" style="color: #BA1820;text-shadow: 2px 1px 1px #666;text-decoration: none;">AMI</a> 
+      </div>
+    </div>
+
+    <div style="text-align:left; margin-top:7px; padding:5px;">
+      To reset your password, click <a href="http://localhost:3000/password_resets/zAKRc6rL8u21v4mKLSIUCQ==/edit">here</a>.
+      <br/>
+      <br/>
+      If you did not request your password to be reset, just ignore this email and your password will continue to stay the same.
+    </div>
+    
+  </div>  
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 10635ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:06:23 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/password_resets/zAKRc6rL8u21v4mKLSIUCQ==/edit" for 127.0.0.1 at Fri May 18 15:06:35 -0700 2012
+  Processing by PasswordResetsController#edit as HTML
+  Parameters: {"id"=>"zAKRc6rL8u21v4mKLSIUCQ=="}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`password_reset_token` = 'zAKRc6rL8u21v4mKLSIUCQ==' LIMIT 1
+Rendered password_resets/edit.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 30ms (Views: 11.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/password_resets/zAKRc6rL8u21v4mKLSIUCQ==" for 127.0.0.1 at Fri May 18 15:06:40 -0700 2012
+  Processing by PasswordResetsController#update as HTML
+  Parameters: {"commit"=>"Update Password", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "id"=>"zAKRc6rL8u21v4mKLSIUCQ==", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`password_reset_token` = 'zAKRc6rL8u21v4mKLSIUCQ==' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT 1 FROM `users` WHERE (`users`.`email` = BINARY 'benhall2121@yahoo.com') AND (`users`.id <> 7) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE `users` SET `password_hash` = '$2a$10$gzZ6Yd4Zv0eH0Y21UMTEoe0Any0n/opeSY7oLTgOUnmfXz1ydYwbO', `updated_at` = '2012-05-18 22:06:40', `password_salt` = '$2a$10$gzZ6Yd4Zv0eH0Y21UMTEoe' WHERE `users`.`id` = 7
+  [1m[36mSQL (0.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/log_in
+Completed 302 Found in 112ms
+
+
+Started GET "/log_in" for 127.0.0.1 at Fri May 18 15:06:40 -0700 2012
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 11ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/log_in" for 127.0.0.1 at Fri May 18 15:06:45 -0700 2012
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at Fri May 18 15:06:56 -0700 2012
+  Processing by SessionsController#create as HTML
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "password"=>"[FILTERED]", "email"=>"benhall2121@yahoo.com"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`email` = 'benhall2121@yahoo.com' LIMIT 1
+Rendered sessions/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 112ms (Views: 9.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at Fri May 18 15:06:59 -0700 2012
+  Processing by SessionsController#create as HTML
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "password"=>"[FILTERED]", "email"=>"benhall2121@yahoo.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'benhall2121@yahoo.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 104ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:06:59 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered users/home.html.erb within layouts/application (101.7ms)
+Completed 200 OK in 107ms (Views: 106.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at Fri May 18 15:07:02 -0700 2012
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:07:02 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/password_resets/zAKRc6rL8u21v4mKLSIUCQ==/edit" for 127.0.0.1 at Fri May 18 15:07:06 -0700 2012
+  Processing by PasswordResetsController#edit as HTML
+  Parameters: {"id"=>"zAKRc6rL8u21v4mKLSIUCQ=="}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`password_reset_token` = 'zAKRc6rL8u21v4mKLSIUCQ==' LIMIT 1[0m
+Rendered password_resets/edit.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 36ms (Views: 13.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/password_resets/zAKRc6rL8u21v4mKLSIUCQ==" for 127.0.0.1 at Fri May 18 15:07:12 -0700 2012
+  Processing by PasswordResetsController#update as HTML
+  Parameters: {"commit"=>"Update Password", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "id"=>"zAKRc6rL8u21v4mKLSIUCQ==", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`password_reset_token` = 'zAKRc6rL8u21v4mKLSIUCQ==' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT 1 FROM `users` WHERE (`users`.`email` = BINARY 'benhall2121@yahoo.com') AND (`users`.id <> 7) LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `users` SET `updated_at` = '2012-05-18 22:07:12', `password_salt` = '$2a$10$2Os64vCm3Q2.SVvYUcbYLe', `password_hash` = '$2a$10$2Os64vCm3Q2.SVvYUcbYLeEVwik6.qr9FwK48Erq/2KXPDyH0FpPa' WHERE `users`.`id` = 7[0m
+  [1m[35mSQL (0.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/log_in
+Completed 302 Found in 111ms
+
+
+Started GET "/log_in" for 127.0.0.1 at Fri May 18 15:07:12 -0700 2012
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at Fri May 18 15:07:18 -0700 2012
+  Processing by SessionsController#create as HTML
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"1gTulQ3vS5NIh11I7fvtl7SzOCZkbNmn/0R0gbpW1hA=", "utf8"=>"✓", "password"=>"[FILTERED]", "email"=>"benhall2121@yahoo.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'benhall2121@yahoo.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 105ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:07:18 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered users/home.html.erb within layouts/application (22.0ms)
+Completed 200 OK in 28ms (Views: 27.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at Fri May 18 15:07:21 -0700 2012
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 18 15:07:21 -0700 2012
+  Processing by UsersController#home as HTML
+Rendered users/home.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 9ms (Views: 9.0ms | ActiveRecord: 0.0ms)
