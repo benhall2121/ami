@@ -46,5 +46,5 @@
 
 <% if is_admin? %>
   <%= link_to 'Edit', edit_startup_path(@startup) %> |
-  <%= link_to 'Back', startups_path %>
+  <%= link_to 'Delete', @startup, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>

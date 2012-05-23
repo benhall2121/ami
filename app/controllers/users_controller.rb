@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_filter :require_admin, :except => ['home', 'index', 'show']
 
   def home
-    @startups = Startup.find(:all, :conditions => ['active = ?', true], :limit => 20)
+    #@startups = Startup.find(:all, :conditions => ['active = ?', true], :limit => 20)
+    @startups = Startup.find(:all, :limit => 20)
   end
 
   def index

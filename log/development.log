@@ -5388,3 +5388,699 @@ Rendered descriptions/_description_fields.html.erb (5.8ms)
 Rendered startups/_form.html.erb (61.9ms)
 Rendered startups/edit.html.erb within layouts/application (69.4ms)
 Completed 200 OK in 387ms (Views: 75.1ms | ActiveRecord: 1.4ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /Users/Ben/Desktop/Work/SideWork/ami/config/initializers/setup_mail.rb:1)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:09:46 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` LIMIT 20[0m
+  [1m[35mSQL (0.8ms)[0m  SHOW TABLES
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/home.html.erb within layouts/application (56.8ms)
+Completed 200 OK in 228ms (Views: 61.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/startups" for 127.0.0.1 at Wed May 23 15:09:50 -0700 2012
+  Processing by StartupsController#index as HTML
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups`
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered startups/index.html.erb within layouts/application (121.1ms)
+Completed 200 OK in 136ms (Views: 127.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/startups/1" for 127.0.0.1 at Wed May 23 15:09:52 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered startups/show.html.erb within layouts/application (44.3ms)
+Completed 200 OK in 69ms (Views: 53.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/startups/1/edit" for 127.0.0.1 at Wed May 23 15:09:54 -0700 2012
+  Processing by StartupsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (user_type = "User")[0m
+  [1m[35mDescription Load (0.4ms)[0m  SELECT `descriptions`.* FROM `descriptions` WHERE (`descriptions`.startup_id = 1)
+Rendered descriptions/_description_fields.html.erb (6.0ms)
+Rendered descriptions/_description_fields.html.erb (5.0ms)
+Rendered startups/_form.html.erb (169.0ms)
+Rendered startups/edit.html.erb within layouts/application (177.3ms)
+Completed 200 OK in 219ms (Views: 182.8ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/startups/1" for 127.0.0.1 at Wed May 23 15:10:07 -0700 2012
+  Processing by StartupsController#update as HTML
+  Parameters: {"startup"=>{"address"=>"4323 E Oakland St", "city"=>"Gilbert", "descriptions_attributes"=>{"0"=>{"title"=>"WOW", "url"=>"http://www.yahoo.com", "id"=>"3", "_destroy"=>"false", "desc_type"=>"Description Ttype", "desc"=>"this is a desc", "upload_content"=>#<ActionDispatch::Http::UploadedFile:0x1038b6d30 @headers="Content-Disposition: form-data; name=\"startup[descriptions_attributes][0][upload_content]\"; filename=\"Techiepalooza Flyer.pdf\"\r\nContent-Type: application/pdf\r\n", @content_type="application/pdf", @tempfile=#<File:/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/RackMultipart20120523-5172-x6xksu-0>, @original_filename="Techiepalooza Flyer.pdf">}}, "zip"=>"85295", "brief_description"=>"We are just soooo Awesome", "startup_name"=>"Awesome Group", "username"=>"AwesomeGroup", "user_id"=>"9", "email"=>"ben@ben.com", "state"=>"AZ"}, "commit"=>"Update Startup", "authenticity_token"=>"EANV/doITIQxAvBQnkRoajvttWzMR94Y8Y3+Y7f66NM=", "utf8"=>"✓", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mDescription Load (0.3ms)[0m  SELECT `descriptions`.* FROM `descriptions` WHERE `descriptions`.`id` IN (3) AND (`descriptions`.startup_id = 1)
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5172-1magynb-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5172-1magynb-0[0]' -resize "128x128>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer20120523-5172-1ekhrfb-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5172-1magynb-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5172-1magynb-0[0]' -resize "300x300>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer20120523-5172-1p7zigu-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5172-1magynb-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5172-1magynb-0[0]' -resize "1224x1584>" -quality 100 '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer20120523-5172-p7rekm-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5172-1magynb-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5172-1magynb-0[0]' -resize "63x63>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer20120523-5172-1tn8lwo-0'
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE `descriptions` SET `upload_content_file_size` = 73652, `upload_content_file_name` = 'Techiepalooza_Flyer.pdf', `upload_content_updated_at` = '2012-05-23 22:10:07', `upload_content_content_type` = 'application/pdf', `updated_at` = '2012-05-23 22:10:18' WHERE `descriptions`.`id` = 3[0m
+[paperclip] Saving attachments.
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/original/IMG_1360.JPG
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/small/IMG_1360.JPG
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/medium/IMG_1360.JPG
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/large/IMG_1360.JPG
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/icon/IMG_1360.JPG
+[paperclip] Saving attachments.
+  [1m[35mSQL (172.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/startups/1
+Completed 302 Found in 11734ms
+
+
+Started GET "/startups/1" for 127.0.0.1 at Wed May 23 15:10:19 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered startups/show.html.erb within layouts/application (73.7ms)
+Completed 200 OK in 92ms (Views: 78.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/startups" for 127.0.0.1 at Wed May 23 15:10:28 -0700 2012
+  Processing by StartupsController#index as HTML
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups`
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered startups/index.html.erb within layouts/application (44.5ms)
+Completed 200 OK in 139ms (Views: 50.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/startups/2" for 127.0.0.1 at Wed May 23 15:10:30 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 2 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered startups/show.html.erb within layouts/application (43.3ms)
+Completed 200 OK in 63ms (Views: 48.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/startups/2/edit" for 127.0.0.1 at Wed May 23 15:10:33 -0700 2012
+  Processing by StartupsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 2 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (user_type = "User")[0m
+  [1m[35mDescription Load (0.4ms)[0m  SELECT `descriptions`.* FROM `descriptions` WHERE (`descriptions`.startup_id = 2)
+Rendered descriptions/_description_fields.html.erb (6.4ms)
+Rendered startups/_form.html.erb (51.2ms)
+Rendered startups/edit.html.erb within layouts/application (58.3ms)
+Completed 200 OK in 99ms (Views: 63.4ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/startups/2" for 127.0.0.1 at Wed May 23 15:10:49 -0700 2012
+  Processing by StartupsController#update as HTML
+  Parameters: {"startup"=>{"address"=>"444 west st", "city"=>"gilbert", "zip"=>"85295", "startup_logo"=>#<ActionDispatch::Http::UploadedFile:0x1031f2940 @headers="Content-Disposition: form-data; name=\"startup[startup_logo]\"; filename=\"justRanIt.png\"\r\nContent-Type: image/png\r\n", @content_type="image/png", @tempfile=#<File:/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/RackMultipart20120523-5172-1dm3cpe-0>, @original_filename="justRanIt.png">, "brief_description"=>"Just a second startuop to test", "startup_name"=>"AnotherStartup", "username"=>"AnotherStartup", "user_id"=>"10", "email"=>"another@gmail.com", "state"=>"AZ"}, "commit"=>"Update Startup", "authenticity_token"=>"EANV/doITIQxAvBQnkRoajvttWzMR94Y8Y3+Y7f66NM=", "utf8"=>"✓", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 2 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5172-f7txa6-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5172-f7txa6-0[0]' -resize "128x128>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt20120523-5172-krdc77-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5172-f7txa6-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5172-f7txa6-0[0]' -resize "300x300>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt20120523-5172-qhexff-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5172-f7txa6-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5172-f7txa6-0[0]' -resize "1224x1584>" -quality 100 '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt20120523-5172-1tmm5l8-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5172-f7txa6-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5172-f7txa6-0[0]' -resize "64x64>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt20120523-5172-1f5xeiw-0'
+  [1m[35mAREL (0.7ms)[0m  UPDATE `startups` SET `updated_at` = '2012-05-23 22:10:50', `startup_logo_file_size` = 37170, `startup_logo_updated_at` = '2012-05-23 22:10:50', `startup_logo_file_name` = 'justRanIt.png', `startup_logo_content_type` = 'image/png' WHERE `startups`.`id` = 2
+[paperclip] Saving attachments.
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/original/be_awesome_today.jpg
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/small/be_awesome_today.jpg
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/medium/be_awesome_today.jpg
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/large/be_awesome_today.jpg
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/icon/be_awesome_today.jpg
+  [1m[36mSQL (29.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/startups/2
+Completed 302 Found in 529ms
+
+
+Started GET "/startups/2" for 127.0.0.1 at Wed May 23 15:10:50 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mStartup Load (0.7ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 2 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered startups/show.html.erb within layouts/application (48.2ms)
+Completed 200 OK in 74ms (Views: 55.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:10:52 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` LIMIT 20[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered users/home.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 57ms (Views: 48.0ms | ActiveRecord: 0.7ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /Users/Ben/Desktop/Work/SideWork/ami/config/initializers/setup_mail.rb:1)
+
+
+Started GET "/startups" for 127.0.0.1 at Wed May 23 15:11:08 -0700 2012
+  Processing by StartupsController#index as HTML
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered startups/index.html.erb within layouts/application (47.3ms)
+Completed 200 OK in 105ms (Views: 52.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/startups/2" for 127.0.0.1 at Wed May 23 15:11:10 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 2 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered startups/show.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 140ms (Views: 125.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/startups/2/edit" for 127.0.0.1 at Wed May 23 15:11:15 -0700 2012
+  Processing by StartupsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 2 LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (user_type = "User")[0m
+  [1m[35mDescription Load (0.4ms)[0m  SELECT `descriptions`.* FROM `descriptions` WHERE (`descriptions`.startup_id = 2)
+Rendered descriptions/_description_fields.html.erb (5.9ms)
+Rendered startups/_form.html.erb (133.8ms)
+Rendered startups/edit.html.erb within layouts/application (141.2ms)
+Completed 200 OK in 183ms (Views: 146.4ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/startups/2" for 127.0.0.1 at Wed May 23 15:11:23 -0700 2012
+  Processing by StartupsController#update as HTML
+  Parameters: {"startup"=>{"address"=>"444 west st", "city"=>"gilbert", "zip"=>"85295", "startup_logo"=>#<ActionDispatch::Http::UploadedFile:0x103531480 @headers="Content-Disposition: form-data; name=\"startup[startup_logo]\"; filename=\"justRanIt.png\"\r\nContent-Type: image/png\r\n", @content_type="image/png", @tempfile=#<File:/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/RackMultipart20120523-5224-1d7tmas-0>, @original_filename="justRanIt.png">, "brief_description"=>"Just a second startuop to test", "startup_name"=>"AnotherStartup", "username"=>"AnotherStartup", "user_id"=>"10", "email"=>"another@gmail.com", "state"=>"AZ"}, "commit"=>"Update Startup", "authenticity_token"=>"EANV/doITIQxAvBQnkRoajvttWzMR94Y8Y3+Y7f66NM=", "utf8"=>"✓", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 2 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5224-oipbuy-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5224-oipbuy-0[0]' -resize "300x300>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt20120523-5224-1ssq8lq-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5224-oipbuy-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5224-oipbuy-0[0]' -resize "1224x1584>" -quality 100 '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt20120523-5224-4tsss9-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5224-oipbuy-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5224-oipbuy-0[0]' -resize "64x64>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt20120523-5224-rtu7en-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5224-oipbuy-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5224-oipbuy-0[0]' -resize "128x128>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt20120523-5224-fl4yj9-0'
+  [1m[35mAREL (0.4ms)[0m  UPDATE `startups` SET `updated_at` = '2012-05-23 22:11:23', `startup_logo_updated_at` = '2012-05-23 22:11:23' WHERE `startups`.`id` = 2
+[paperclip] Saving attachments.
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/original/justRanIt.png
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/medium/justRanIt.png
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/large/justRanIt.png
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/icon/justRanIt.png
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/small/justRanIt.png
+  [1m[36mSQL (0.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/startups/2
+Completed 302 Found in 408ms
+
+
+Started GET "/startups/2" for 127.0.0.1 at Wed May 23 15:11:23 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 2 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered startups/show.html.erb within layouts/application (43.9ms)
+Completed 200 OK in 182ms (Views: 50.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:11:25 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` LIMIT 20[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered users/home.html.erb within layouts/application (44.8ms)
+Completed 200 OK in 59ms (Views: 50.2ms | ActiveRecord: 0.7ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /Users/Ben/Desktop/Work/SideWork/ami/config/initializers/setup_mail.rb:1)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:14:18 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[36mStartup Load (0.5ms)[0m  [1mSELECT `startups`.* FROM `startups` LIMIT 20[0m
+  [1m[35mSQL (5.0ms)[0m  SHOW TABLES
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/home.html.erb within layouts/application (112.9ms)
+Completed 200 OK in 157ms (Views: 113.7ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/startups/2" for 127.0.0.1 at Wed May 23 15:14:21 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 2 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered startups/show.html.erb within layouts/application (124.1ms)
+Completed 200 OK in 195ms (Views: 178.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/startups/2/edit" for 127.0.0.1 at Wed May 23 15:14:22 -0700 2012
+  Processing by StartupsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 2 LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (user_type = "User")[0m
+  [1m[35mDescription Load (0.4ms)[0m  SELECT `descriptions`.* FROM `descriptions` WHERE (`descriptions`.startup_id = 2)
+Rendered descriptions/_description_fields.html.erb (90.8ms)
+Rendered startups/_form.html.erb (169.9ms)
+Rendered startups/edit.html.erb within layouts/application (177.9ms)
+Completed 200 OK in 220ms (Views: 182.9ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/startups/2" for 127.0.0.1 at Wed May 23 15:14:35 -0700 2012
+  Processing by StartupsController#update as HTML
+  Parameters: {"startup"=>{"address"=>"444 west st", "city"=>"gilbert", "zip"=>"85295", "startup_logo"=>#<ActionDispatch::Http::UploadedFile:0x10366ae50 @headers="Content-Disposition: form-data; name=\"startup[startup_logo]\"; filename=\"justRanIt.png\"\r\nContent-Type: image/png\r\n", @content_type="image/png", @tempfile=#<File:/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/RackMultipart20120523-5247-1usf4rt-0>, @original_filename="justRanIt.png">, "brief_description"=>"Just a second startuop to test", "startup_name"=>"AnotherStartup", "username"=>"AnotherStartup", "user_id"=>"10", "email"=>"another@gmail.com", "state"=>"AZ"}, "commit"=>"Update Startup", "authenticity_token"=>"EANV/doITIQxAvBQnkRoajvttWzMR94Y8Y3+Y7f66NM=", "utf8"=>"✓", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+  [1m[35mStartup Load (0.3ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 2 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5247-13h8z3p-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5247-13h8z3p-0[0]' -resize "128x128>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt20120523-5247-1bho34w-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5247-13h8z3p-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5247-13h8z3p-0[0]' -resize "300x300>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt20120523-5247-124mcja-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5247-13h8z3p-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5247-13h8z3p-0[0]' -resize "1224x1584>" -quality 100 '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt20120523-5247-9y08q-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5247-13h8z3p-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt.png20120523-5247-13h8z3p-0[0]' -resize "x64" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/justRanIt20120523-5247-b0xv4w-0'
+  [1m[35mAREL (0.4ms)[0m  UPDATE `startups` SET `updated_at` = '2012-05-23 22:14:36', `startup_logo_updated_at` = '2012-05-23 22:14:35' WHERE `startups`.`id` = 2
+[paperclip] Saving attachments.
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/original/justRanIt.png
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/small/justRanIt.png
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/medium/justRanIt.png
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/large/justRanIt.png
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/2/icon/justRanIt.png
+  [1m[36mSQL (37.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/startups/2
+Completed 302 Found in 936ms
+
+
+Started GET "/startups/2" for 127.0.0.1 at Wed May 23 15:14:36 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 2 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 10 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered startups/show.html.erb within layouts/application (45.7ms)
+Completed 200 OK in 187ms (Views: 50.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:14:39 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` LIMIT 20[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered users/home.html.erb within layouts/application (43.5ms)
+Completed 200 OK in 57ms (Views: 48.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/startups/1" for 127.0.0.1 at Wed May 23 15:14:44 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered startups/show.html.erb within layouts/application (43.5ms)
+Completed 200 OK in 151ms (Views: 48.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/startups/1/edit" for 127.0.0.1 at Wed May 23 15:14:46 -0700 2012
+  Processing by StartupsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE (user_type = "User")
+  [1m[36mDescription Load (0.4ms)[0m  [1mSELECT `descriptions`.* FROM `descriptions` WHERE (`descriptions`.startup_id = 1)[0m
+Rendered descriptions/_description_fields.html.erb (5.9ms)
+Rendered descriptions/_description_fields.html.erb (5.3ms)
+Rendered startups/_form.html.erb (129.8ms)
+Rendered startups/edit.html.erb within layouts/application (137.3ms)
+Completed 200 OK in 179ms (Views: 142.3ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/startups/1" for 127.0.0.1 at Wed May 23 15:14:55 -0700 2012
+  Processing by StartupsController#update as HTML
+  Parameters: {"startup"=>{"address"=>"4323 E Oakland St", "city"=>"Gilbert", "descriptions_attributes"=>{"0"=>{"title"=>"WOW", "url"=>"http://www.yahoo.com", "id"=>"3", "_destroy"=>"false", "desc_type"=>"Description Ttype", "desc"=>"this is a desc", "upload_content"=>#<ActionDispatch::Http::UploadedFile:0x1033580a0 @headers="Content-Disposition: form-data; name=\"startup[descriptions_attributes][0][upload_content]\"; filename=\"Techiepalooza Flyer.pdf\"\r\nContent-Type: application/pdf\r\n", @content_type="application/pdf", @tempfile=#<File:/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/RackMultipart20120523-5247-eehg0b-0>, @original_filename="Techiepalooza Flyer.pdf">}}, "zip"=>"85295", "brief_description"=>"We are just soooo Awesome", "startup_name"=>"Awesome Group", "username"=>"AwesomeGroup", "user_id"=>"9", "email"=>"ben@ben.com", "state"=>"AZ"}, "commit"=>"Update Startup", "authenticity_token"=>"EANV/doITIQxAvBQnkRoajvttWzMR94Y8Y3+Y7f66NM=", "utf8"=>"✓", "id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mDescription Load (0.3ms)[0m  [1mSELECT `descriptions`.* FROM `descriptions` WHERE `descriptions`.`id` IN (3) AND (`descriptions`.startup_id = 1)[0m
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5247-m5evhn-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5247-m5evhn-0[0]' -resize "128x128>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer20120523-5247-1fsryl0-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5247-m5evhn-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5247-m5evhn-0[0]' -resize "300x300>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer20120523-5247-3sgwt8-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5247-m5evhn-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5247-m5evhn-0[0]' -resize "1224x1584>" -quality 100 '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer20120523-5247-6xmcdd-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5247-m5evhn-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer.pdf20120523-5247-m5evhn-0[0]' -resize "63x63>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/Techiepalooza Flyer20120523-5247-1co6zxs-0'
+  [1m[35mAREL (0.5ms)[0m  UPDATE `descriptions` SET `updated_at` = '2012-05-23 22:15:04', `upload_content_updated_at` = '2012-05-23 22:14:55' WHERE `descriptions`.`id` = 3
+[paperclip] Saving attachments.
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/original/Techiepalooza_Flyer.pdf
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/small/Techiepalooza_Flyer.pdf
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/medium/Techiepalooza_Flyer.pdf
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/large/Techiepalooza_Flyer.pdf
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/icon/Techiepalooza_Flyer.pdf
+[paperclip] Saving attachments.
+  [1m[36mSQL (64.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/startups/1
+Completed 302 Found in 9677ms
+
+
+Started GET "/startups/1" for 127.0.0.1 at Wed May 23 15:15:04 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered startups/show.html.erb within layouts/application (380.9ms)
+Completed 200 OK in 405ms (Views: 386.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:15:07 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` LIMIT 20[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered users/home.html.erb within layouts/application (41.4ms)
+Completed 200 OK in 55ms (Views: 46.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/startups/1" for 127.0.0.1 at Wed May 23 15:15:49 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered startups/show.html.erb within layouts/application (128.6ms)
+Completed 200 OK in 149ms (Views: 134.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/startups/1/edit" for 127.0.0.1 at Wed May 23 15:15:51 -0700 2012
+  Processing by StartupsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE (user_type = "User")
+  [1m[36mDescription Load (0.4ms)[0m  [1mSELECT `descriptions`.* FROM `descriptions` WHERE (`descriptions`.startup_id = 1)[0m
+Rendered descriptions/_description_fields.html.erb (5.4ms)
+Rendered descriptions/_description_fields.html.erb (6.6ms)
+Rendered startups/_form.html.erb (171.2ms)
+Rendered startups/edit.html.erb within layouts/application (179.6ms)
+Completed 200 OK in 220ms (Views: 184.7ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/startups/1" for 127.0.0.1 at Wed May 23 15:16:08 -0700 2012
+  Processing by StartupsController#update as HTML
+  Parameters: {"startup"=>{"address"=>"4323 E Oakland St", "city"=>"Gilbert", "descriptions_attributes"=>{"0"=>{"title"=>"WOW", "url"=>"http://www.yahoo.com", "id"=>"3", "_destroy"=>"false", "desc_type"=>"Description Ttype", "desc"=>"this is a desc", "upload_content"=>#<ActionDispatch::Http::UploadedFile:0x1034eebf8 @headers="Content-Disposition: form-data; name=\"startup[descriptions_attributes][0][upload_content]\"; filename=\"IMG_0556.JPG\"\r\nContent-Type: image/jpeg\r\n", @content_type="image/jpeg", @tempfile=#<File:/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/RackMultipart20120523-5247-10kxeh8-0>, @original_filename="IMG_0556.JPG">}}, "zip"=>"85295", "brief_description"=>"We are just soooo Awesome", "startup_name"=>"Awesome Group", "username"=>"AwesomeGroup", "user_id"=>"9", "email"=>"ben@ben.com", "state"=>"AZ"}, "commit"=>"Update Startup", "authenticity_token"=>"EANV/doITIQxAvBQnkRoajvttWzMR94Y8Y3+Y7f66NM=", "utf8"=>"✓", "id"=>"1"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mDescription Load (0.4ms)[0m  [1mSELECT `descriptions`.* FROM `descriptions` WHERE `descriptions`.`id` IN (3) AND (`descriptions`.startup_id = 1)[0m
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/IMG_0556.JPG20120523-5247-1909p9c-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/IMG_0556.JPG20120523-5247-1909p9c-0[0]' -resize "128x128>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/IMG_055620120523-5247-jjoqsb-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/IMG_0556.JPG20120523-5247-1909p9c-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/IMG_0556.JPG20120523-5247-1909p9c-0[0]' -resize "300x300>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/IMG_055620120523-5247-1qyqjni-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/IMG_0556.JPG20120523-5247-1909p9c-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/IMG_0556.JPG20120523-5247-1909p9c-0[0]' -resize "1224x1584>" -quality 100 '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/IMG_055620120523-5247-5sx17l-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/IMG_0556.JPG20120523-5247-1909p9c-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/IMG_0556.JPG20120523-5247-1909p9c-0[0]' -resize "63x63>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/IMG_055620120523-5247-1dnos6v-0'
+  [1m[35mAREL (0.4ms)[0m  UPDATE `descriptions` SET `updated_at` = '2012-05-23 22:16:13', `upload_content_file_size` = 2431062, `upload_content_updated_at` = '2012-05-23 22:16:08', `upload_content_content_type` = 'image/jpeg', `upload_content_file_name` = 'IMG_0556.JPG' WHERE `descriptions`.`id` = 3
+[paperclip] Saving attachments.
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/original/Techiepalooza_Flyer.pdf
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/small/Techiepalooza_Flyer.pdf
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/medium/Techiepalooza_Flyer.pdf
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/large/Techiepalooza_Flyer.pdf
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/icon/Techiepalooza_Flyer.pdf
+[paperclip] Saving attachments.
+  [1m[36mSQL (127.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/startups/1
+Completed 302 Found in 5166ms
+
+
+Started GET "/startups/1" for 127.0.0.1 at Wed May 23 15:16:13 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered startups/show.html.erb within layouts/application (925.1ms)
+Completed 200 OK in 946ms (Views: 930.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:16:21 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` LIMIT 20[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered users/home.html.erb within layouts/application (49.1ms)
+Completed 200 OK in 108ms (Views: 98.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/startups/1" for 127.0.0.1 at Wed May 23 15:16:23 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered startups/show.html.erb within layouts/application (205.5ms)
+Completed 200 OK in 225ms (Views: 210.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/startups/1/edit" for 127.0.0.1 at Wed May 23 15:16:25 -0700 2012
+  Processing by StartupsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE (user_type = "User")
+  [1m[36mDescription Load (0.4ms)[0m  [1mSELECT `descriptions`.* FROM `descriptions` WHERE (`descriptions`.startup_id = 1)[0m
+Rendered descriptions/_description_fields.html.erb (6.0ms)
+Rendered descriptions/_description_fields.html.erb (6.7ms)
+Rendered startups/_form.html.erb (252.4ms)
+Rendered startups/edit.html.erb within layouts/application (391.5ms)
+Completed 200 OK in 434ms (Views: 396.6ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/startups/1" for 127.0.0.1 at Wed May 23 15:16:40 -0700 2012
+  Processing by StartupsController#update as HTML
+  Parameters: {"startup"=>{"address"=>"4323 E Oakland St", "city"=>"Gilbert", "descriptions_attributes"=>{"0"=>{"title"=>"WOW", "url"=>"http://www.yahoo.com", "id"=>"3", "_destroy"=>"false", "desc_type"=>"Description Ttype", "desc"=>"this is a desc", "upload_content"=>#<ActionDispatch::Http::UploadedFile:0x103770e58 @headers="Content-Disposition: form-data; name=\"startup[descriptions_attributes][0][upload_content]\"; filename=\"chinesefull_size_toy.png\"\r\nContent-Type: image/png\r\n", @content_type="image/png", @tempfile=#<File:/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/RackMultipart20120523-5247-zpmabj-0>, @original_filename="chinesefull_size_toy.png">}}, "zip"=>"85295", "brief_description"=>"We are just soooo Awesome", "startup_name"=>"Awesome Group", "username"=>"AwesomeGroup", "user_id"=>"9", "email"=>"ben@ben.com", "state"=>"AZ"}, "commit"=>"Update Startup", "authenticity_token"=>"EANV/doITIQxAvBQnkRoajvttWzMR94Y8Y3+Y7f66NM=", "utf8"=>"✓", "id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mDescription Load (0.3ms)[0m  [1mSELECT `descriptions`.* FROM `descriptions` WHERE `descriptions`.`id` IN (3) AND (`descriptions`.startup_id = 1)[0m
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chinesefull_size_toy.png20120523-5247-fcpr1t-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chinesefull_size_toy.png20120523-5247-fcpr1t-0[0]' -resize "128x128>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chinesefull_size_toy20120523-5247-1yi6fjo-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chinesefull_size_toy.png20120523-5247-fcpr1t-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chinesefull_size_toy.png20120523-5247-fcpr1t-0[0]' -resize "300x300>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chinesefull_size_toy20120523-5247-zswb2n-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chinesefull_size_toy.png20120523-5247-fcpr1t-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chinesefull_size_toy.png20120523-5247-fcpr1t-0[0]' -resize "1224x1584>" -quality 100 '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chinesefull_size_toy20120523-5247-4yy4hb-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chinesefull_size_toy.png20120523-5247-fcpr1t-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chinesefull_size_toy.png20120523-5247-fcpr1t-0[0]' -resize "63x63>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chinesefull_size_toy20120523-5247-6chddd-0'
+  [1m[35mAREL (0.4ms)[0m  UPDATE `descriptions` SET `upload_content_updated_at` = '2012-05-23 22:16:40', `upload_content_file_name` = 'chinesefull_size_toy.png', `updated_at` = '2012-05-23 22:16:41', `upload_content_file_size` = 163606, `upload_content_content_type` = 'image/png' WHERE `descriptions`.`id` = 3
+[paperclip] Saving attachments.
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/original/IMG_0556.JPG
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/small/IMG_0556.JPG
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/medium/IMG_0556.JPG
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/large/IMG_0556.JPG
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/upload_content/3/icon/IMG_0556.JPG
+[paperclip] Saving attachments.
+  [1m[36mSQL (0.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/startups/1
+Completed 302 Found in 663ms
+
+
+Started GET "/startups/1" for 127.0.0.1 at Wed May 23 15:16:41 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered startups/show.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 70ms (Views: 49.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/startups/1" for 127.0.0.1 at Wed May 23 15:18:02 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStartup Load (0.3ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered startups/show.html.erb within layouts/application (44.1ms)
+Completed 200 OK in 63ms (Views: 49.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/startups/1" for 127.0.0.1 at Wed May 23 15:18:06 -0700 2012
+  Processing by StartupsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"EANV/doITIQxAvBQnkRoajvttWzMR94Y8Y3+Y7f66NM=", "id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+[paperclip] Scheduling attachments for deletion.
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM `startups` WHERE `startups`.`id` = 1[0m
+[paperclip] Deleting attachments.
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/1/original/Techiepalooza_Flyer.pdf
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/1/small/Techiepalooza_Flyer.pdf
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/1/medium/Techiepalooza_Flyer.pdf
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/1/large/Techiepalooza_Flyer.pdf
+[paperclip] deleting /Users/Ben/Desktop/Work/SideWork/ami/public/assets/startup_logo/1/icon/Techiepalooza_Flyer.pdf
+  [1m[35mSQL (0.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/startups
+Completed 302 Found in 89ms
+
+
+Started GET "/startups" for 127.0.0.1 at Wed May 23 15:18:06 -0700 2012
+  Processing by StartupsController#index as HTML
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups`[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered startups/index.html.erb within layouts/application (121.1ms)
+Completed 200 OK in 137ms (Views: 127.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/startups" for 127.0.0.1 at Wed May 23 15:18:10 -0700 2012
+  Processing by StartupsController#index as HTML
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups`[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+Rendered startups/index.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 57ms (Views: 48.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/admin" for 127.0.0.1 at Wed May 23 15:18:13 -0700 2012
+  Processing by UsersController#admin as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/admin.html.erb within layouts/application (87.2ms)
+Completed 200 OK in 114ms (Views: 93.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/startups/new" for 127.0.0.1 at Wed May 23 15:18:15 -0700 2012
+  Processing by StartupsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (user_type = "User")[0m
+Rendered descriptions/_description_fields.html.erb (5.8ms)
+Rendered startups/_form.html.erb (44.5ms)
+Rendered startups/new.html.erb within layouts/application (51.5ms)
+Completed 200 OK in 94ms (Views: 57.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/startups" for 127.0.0.1 at Wed May 23 15:18:46 -0700 2012
+  Processing by StartupsController#create as HTML
+  Parameters: {"startup"=>{"address"=>"123 njnj", "city"=>"Gilbert", "zip"=>"85295", "startup_logo"=>#<ActionDispatch::Http::UploadedFile:0x1038e6b98 @headers="Content-Disposition: form-data; name=\"startup[startup_logo]\"; filename=\"chineseWallpaper_1200x800.jpeg\"\r\nContent-Type: image/jpeg\r\n", @content_type="image/jpeg", @tempfile=#<File:/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/RackMultipart20120523-5247-1pvowoe-0>, @original_filename="chineseWallpaper_1200x800.jpeg">, "brief_description"=>"Awesome", "startup_name"=>"Techpolloza", "username"=>"Techpolloza", "user_id"=>"7", "email"=>"ben@tech.com", "state"=>"AZ"}, "commit"=>"Create Startup", "authenticity_token"=>"EANV/doITIQxAvBQnkRoajvttWzMR94Y8Y3+Y7f66NM=", "utf8"=>"✓"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chineseWallpaper_1200x800.jpeg20120523-5247-1wzqszw-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chineseWallpaper_1200x800.jpeg20120523-5247-1wzqszw-0[0]' -resize "128x128>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chineseWallpaper_1200x80020120523-5247-ujn2yb-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chineseWallpaper_1200x800.jpeg20120523-5247-1wzqszw-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chineseWallpaper_1200x800.jpeg20120523-5247-1wzqszw-0[0]' -resize "300x300>" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chineseWallpaper_1200x80020120523-5247-15r61ps-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chineseWallpaper_1200x800.jpeg20120523-5247-1wzqszw-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chineseWallpaper_1200x800.jpeg20120523-5247-1wzqszw-0[0]' -resize "1224x1584>" -quality 100 '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chineseWallpaper_1200x80020120523-5247-wtz27k-0'
+[32mCommand[0m :: identify -format %wx%h '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chineseWallpaper_1200x800.jpeg20120523-5247-1wzqszw-0[0]'
+[32mCommand[0m :: convert '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chineseWallpaper_1200x800.jpeg20120523-5247-1wzqszw-0[0]' -resize "x64" '/var/folders/24/24aCbtOxGYmp6t+LQ4nGD++++TI/-Tmp-/chineseWallpaper_1200x80020120523-5247-oe5lls-0'
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.3ms)[0m  describe `startups`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `startups` (`startup_logo_content_type`, `active`, `email`, `startup_logo_file_name`, `startup_name`, `city`, `state`, `address`, `startup_logo_file_size`, `startup_logo_updated_at`, `username`, `brief_description`, `user_id`, `updated_at`, `zip`, `created_at`) VALUES ('image/jpeg', 0, 'ben@tech.com', 'chineseWallpaper_1200x800.jpeg', 'Techpolloza', 'Gilbert', 'AZ', '123 njnj', 289128, '2012-05-23 22:18:46', 'Techpolloza', 'Awesome', 7, '2012-05-23 22:18:47', '85295', '2012-05-23 22:18:47')[0m
+[paperclip] Saving attachments.
+  [1m[35mSQL (31.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/startups/3
+Completed 302 Found in 942ms
+
+
+Started GET "/startups/3" for 127.0.0.1 at Wed May 23 15:18:47 -0700 2012
+  Processing by StartupsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` WHERE `startups`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered startups/show.html.erb within layouts/application (175.4ms)
+Completed 200 OK in 200ms (Views: 184.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/startups" for 127.0.0.1 at Wed May 23 15:18:51 -0700 2012
+  Processing by StartupsController#index as HTML
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups`
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered startups/index.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 58ms (Views: 49.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:18:53 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` LIMIT 20
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/home.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 157ms (Views: 48.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:19:05 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` LIMIT 20
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/home.html.erb within layouts/application (43.1ms)
+Completed 200 OK in 58ms (Views: 48.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:19:06 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[35mStartup Load (0.5ms)[0m  SELECT `startups`.* FROM `startups` LIMIT 20
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/home.html.erb within layouts/application (42.7ms)
+Completed 200 OK in 137ms (Views: 47.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:19:09 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` LIMIT 20
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/home.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 56ms (Views: 46.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:19:10 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` LIMIT 20
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/home.html.erb within layouts/application (42.8ms)
+Completed 200 OK in 139ms (Views: 48.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users?user_type=Contributor" for 127.0.0.1 at Wed May 23 15:19:16 -0700 2012
+  Processing by UsersController#index as HTML
+  Parameters: {"user_type"=>"Contributor"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE (user_type = ('Contributor'))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (21.1ms)
+Completed 200 OK in 34ms (Views: 26.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users?user_type=Contributor" for 127.0.0.1 at Wed May 23 15:19:44 -0700 2012
+  Processing by UsersController#index as HTML
+  Parameters: {"user_type"=>"Contributor"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE (user_type = ('Contributor'))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (98.7ms)
+Completed 200 OK in 112ms (Views: 103.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users?user_type=Contributor" for 127.0.0.1 at Wed May 23 15:19:46 -0700 2012
+  Processing by UsersController#index as HTML
+  Parameters: {"user_type"=>"Contributor"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE (user_type = ('Contributor'))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (22.6ms)
+Completed 200 OK in 36ms (Views: 27.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 23 15:19:49 -0700 2012
+  Processing by UsersController#home as HTML
+  [1m[35mStartup Load (0.4ms)[0m  SELECT `startups`.* FROM `startups` LIMIT 20
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/home.html.erb within layouts/application (41.4ms)
+Completed 200 OK in 55ms (Views: 46.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users?user_type=Contributor" for 127.0.0.1 at Wed May 23 15:19:51 -0700 2012
+  Processing by UsersController#index as HTML
+  Parameters: {"user_type"=>"Contributor"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE (user_type = ('Contributor'))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (22.0ms)
+Completed 200 OK in 36ms (Views: 27.2ms | ActiveRecord: 0.7ms)
