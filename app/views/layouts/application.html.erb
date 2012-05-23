@@ -8,24 +8,63 @@
   <%= javascript_include_tag 'rails' %>
   <%= csrf_meta_tag %>
 
+  <link href='http://fonts.googleapis.com/css?family=Jura:400,300' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
-<div id="user_nav">
-  <% if !current_user.nil? %>
-    Logged in as <%= current_user.email %>.
-    <%= link_to "Log out", log_out_path %>
-  <% else %>
-    <%= link_to "Sign up", sign_up_path %> or
-    <%= link_to "log in", log_in_path %>
+<div class="header_wrapper">
+  <div class="top_nav_container">
+    <div class="top_nav_wrapper">
+      <% if current_user.nil? %>
+        <%= link_to "LOGIN", log_in_path %> <%= link_to "SIGNUP", sign_up_path %> 
+      <% else %>
+        <%= link_to "LOGOUT", log_out_path %> 
+        <% if is_admin? %>
+          <%= link_to "ADMIN PANEL", admin_path %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="main_nav_wrapper">
+    <div class="logo_wrapper">
+      <%= link_to image_tag("yumyumLogo30.jpg"), root_path() %>
+    </div>
+   
+    <div class="main_nav_link_wrapper">
+      <%= link_to "Startups", startups_path %>
+      <%= link_to "Contributors", users_path(:user_type => 'Contributor') %>
+      <%= link_to "About", "" %>
+      <%= link_to "Contact", "" %>
+      <%= link_to "FAQ", "" %>
+    </div>
+  </div>
+</div>
+
+<div class="notification_wrapper">
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
   <% end %>
 </div>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
+<div class="main_wrapper">
 
-<%= yield %>
+  <%= yield %>
+</div>
+
+<div class="footer_nav_wrapper">
+  <%= link_to "Home", root_path %>
+  <%= link_to "Startups", startups_path %>
+  <%= link_to "Contributors", "" %>
+  <%= link_to "About", "" %>
+  <%= link_to "Contact", "" %>
+  <%= link_to "FAQ", "" %>
+</div>  
+
+<div class="footer">
+  &#169; <%= Time.now.year %> <%= link_to 'AMI', root_path %> All Rights Reserved 
+</div>
 
 </body>
 </html>

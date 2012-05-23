@@ -1,11 +1,17 @@
 class UsersController < ApplicationController
   
+  before_filter :require_admin, :except => ['home', 'index', 'show']
 
   def home
+    @startups = Startup.find(:all, :conditions => ['active = ?', true], :limit => 20)
   end
 
   def index
-    @users = User.all
+    if(params[:user_type])
+      @users = User.find(:all, :conditions => ["user_type = (?)", params[:user_type]])
+    else
+      @users = User.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -48,8 +54,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         AmiMailer.new_signup_email(@user).deliver 
-        cookies.permanent[:auth_token] = @user.auth_token
-        session[:user_id] = @user.id
+        # Uncomment these two lines when admins don't create users. These two lines set the user as logged in when they signup
+        # cookies.permanent[:auth_token] = @user.auth_token
+        # session[:user_id] = @user.id
         format.html { redirect_to(root_url, :notice => 'Signed Up!') }
       else
         format.html { render :action => "new" }
@@ -84,4 +91,8 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def admin
+  end
+
 end

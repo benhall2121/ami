@@ -32,6 +32,7 @@ GEM
     bcrypt-ruby (3.0.1)
     builder (2.1.2)
     cgi_multipart_eof_fix (2.5.0)
+    cocaine (0.2.1)
     daemons (1.1.8)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -51,6 +52,12 @@ GEM
       fastthread (>= 1.0.1)
       gem_plugin (>= 0.2.3)
     mysql2 (0.2.18)
+    paperclip (3.0.1)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
     polyglot (0.3.3)
     rack (1.2.5)
     rack-mount (0.6.14)
@@ -90,6 +97,7 @@ DEPENDENCIES
   mail (= 2.2.19)
   mongrel
   mysql2 (< 0.3)
+  paperclip
   rails (= 3.0.10)
   rake (= 0.9.2.2)
   rest-client

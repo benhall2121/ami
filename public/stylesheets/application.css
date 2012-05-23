@@ -1,0 +1,169 @@
+
+body{
+  margin:0;
+  color:#595959;
+  font-family: 'Jura', sans-serif;
+  width:1000px; /* Main Width of site */
+  margin:0 auto;
+}
+
+a{
+  text-decoration:none;
+  color:#595959;	
+}
+
+a:hover{
+  color:#121212;	
+}
+
+.left{
+  text-align:left;
+}
+
+.right{
+  text-align:right;
+}
+
+.section_header{
+  font-weight:bold;
+  font-size:15px;
+}
+
+/******************************  Main Layout ******************************/
+
+.header_wrapper{
+  border-bottom:2px solid #D9D8BA;
+}
+
+.top_nav_container{
+  text-align:right;
+}
+
+.top_nav_wrapper{
+  background-color:#D9D8BA;
+  border:1px solid #C9C8A9;
+  padding:3px;
+  display:inline-block;
+}
+
+.top_nav_wrapper a{
+  font-size:11px;
+  padding:3px 6px;
+  font-weight:bold;
+}
+
+.logo_wrapper{
+  display:inline-block;
+}
+
+.main_nav_wrapper{
+}
+
+.main_nav_link_wrapper{
+  display:inline-block;
+  margin-bottom:10px;
+  vertical-align:bottom;
+}
+
+.main_nav_link_wrapper a{
+	font-size:38px;
+	padding:20px 12px;
+}
+
+.notification_wrapper{
+  font-size:12px;
+  text-align:center;
+  padding:5px 0px;
+  font-weight:bold;
+}
+
+.main_wrapper{
+  padding:10px 0px;
+}
+
+.footer_nav_wrapper{
+  border-bottom:1px solid #D9D8BA;
+  border-top:1px solid #D9D8BA;
+  text-align:center;
+  padding:3px;
+  margin-top:30px;
+}
+
+.footer_nav_wrapper a{
+  font-size:12px;
+  padding:0 30px;
+}
+
+.footer{
+  margin-top:5px;
+  text-align:center;
+  padding:5px;
+  font-size:12px;
+}
+
+/******************************  END Main Layout ******************************/
+
+
+
+/******************************  HOME ******************************/
+
+.recent_startups_wrapper{
+  text-align:center;
+}
+
+.each_startup_wrapper{
+  display:inline-block;
+  vertical-align:top;
+}
+
+.how_it_works_div{
+  margin-top:10px;
+}
+
+/******************************  END HOME ******************************/
+
+
+/******************************  STARTUPS ******************************/
+
+.index_each_startup{
+  padding:8px 5px; 
+  border-bottom:1px solid #EBEAD5;
+  border-top:1px solid #EBEAD5;
+  margin:10px 0;
+}
+
+.index_each_startup_logo_div{
+  display:inline-block;
+}
+
+.index_each_startup_logo_image{
+  border:1px solid #C9C8A9;
+  padding:3px;
+}
+
+.index_each_startup_logo_image:hover{
+  border:1px solid #9C9B80;
+}
+
+.index_each_startup_text{
+  display:inline-block;
+  width:90%;
+  vertical-align:top;
+}
+
+.index_each_startup_name{
+  font-weight:bold;
+}
+
+.index_each_startup_desc{
+}
+
+/******************************  END STARTUPS ******************************/
+
+
+
+
+
+
+
+

@@ -10,7 +10,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120518210459) do
+ActiveRecord::Schema.define(:version => 20120523212726) do
+
+  create_table "descriptions", :force => true do |t|
+    t.string   "title"
+    t.string   "desc_type"
+    t.text     "desc"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "upload_content_file_name"
+    t.string   "upload_content_content_type"
+    t.integer  "upload_content_file_size"
+    t.datetime "upload_content_updated_at"
+    t.integer  "startup_id"
+  end
+
+  create_table "startups", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "startup_name"
+    t.string   "email"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "brief_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "startup_logo_file_name"
+    t.string   "startup_logo_content_type"
+    t.integer  "startup_logo_file_size"
+    t.datetime "startup_logo_updated_at"
+    t.string   "username"
+    t.boolean  "active",                    :default => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"

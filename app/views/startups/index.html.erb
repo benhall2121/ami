@@ -1,0 +1,20 @@
+<h1>Startups</h1>
+
+
+<% @startups.each do |startup| %>
+  <div class="index_each_startup">
+    <div class="index_each_startup_logo_div">
+      <%= link_to image_tag(startup.startup_logo.url(:icon), :class => 'index_each_startup_logo_image'), startup %>
+    </div>
+    <div class="index_each_startup_text">
+      <div class="index_each_startup_name">
+        <%= link_to startup.startup_name, startup %>
+      </div>
+      <div class="index_each_startup_desc">
+        <%= startup.brief_description %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+

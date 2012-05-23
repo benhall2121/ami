@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
+  has_many :startups
+
   before_create { generate_token(:auth_token) }
 
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :user_type
   
   attr_accessor :password
   before_save :encrypt_password

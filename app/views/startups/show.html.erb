@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @startup.user.email %>
+</p>
+
+<p>
+  <b>Startup name:</b>
+  <%= @startup.startup_name %>
+</p>
+
+<p>
+  <b>Startup Contact Email:</b>
+  <%= @startup.email %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @startup.address %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @startup.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @startup.state %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @startup.zip %>
+</p>
+
+<p>
+  <b>Brief description:</b>
+  <%= @startup.brief_description %>
+</p>
+
+<p>
+<%= image_tag @startup.startup_logo.url(:medium) %> <%= image_tag @startup.startup_logo.url(:small) %> <%= image_tag @startup.startup_logo.url(:icon) %>
+</p>
+
+<% if is_admin? %>
+  <%= link_to 'Edit', edit_startup_path(@startup) %> |
+  <%= link_to 'Back', startups_path %>
+<% end %>

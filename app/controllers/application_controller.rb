@@ -15,13 +15,13 @@ class ApplicationController < ActionController::Base
   
   def require_login
     unless current_user
-      redirect_to root_path
+      redirect_to root_path, :notice => 'You must be logged in to view that page.'
     end
   end
   
   def require_admin
     unless current_user && current_user.admin?
-      redirect_to root_path
+      redirect_to root_path, :notice => 'You must be an admin to view that page.'
     end
   end
 

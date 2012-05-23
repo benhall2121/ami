@@ -1,1 +1,23 @@
-<h1>Home</h1>
+
+
+<div class="page_wrapper">
+  <div class="recent_startups_wrapper">
+  	<div class="section_header">
+  		RECENT STARTUPS
+  	</div>
+    <% @startups.each do |startup| %>
+      <div class="each_startup_wrapper">
+        <%= link_to image_tag(startup.startup_logo.url(:icon), :class => 'index_each_startup_logo_image'), startup %>
+      </div>
+    <% end %>
+  </div>	
+  <div class="how_it_works_div">
+  	<div class="section_header">
+  		HOW IT WORKS
+  	</div>
+  	<div>
+  		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tellus diam, fringilla accumsan faucibus eget, tempor in mi. Cras eu est sit amet elit tempus condimentum id vel arcu. Nulla tortor metus, molestie quis vehicula eget, adipiscing hendrerit eros. Suspendisse sed orci non ligula cursus pellentesque. Ut tincidunt, massa vitae bibendum tempor, nisl nisi convallis magna, non ultricies lacus ante a lacus. Ut ipsum erat, bibendum in malesuada in, pellentesque ac odio. Sed tempus commodo commodo. Nam luctus, nunc ut suscipit luctus, est nunc iaculis arcu, et aliquet justo purus vitae risus. Aliquam erat volutpat. Quisque condimentum enim in eros mollis vel porttitor leo pharetra.
+  	</div>
+  </div>
+</div>
+
