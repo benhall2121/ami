@@ -1,8 +1,16 @@
 
-<% if !params[:user_type].nil? %>
-  <h1><%= params[:user_type].pluralize %></h1>
-<% else %>
-  <h1>Users</h1>
+<div class="page_header">
+  <% if !params[:user_type].nil? %>
+    <%= params[:user_type].pluralize %>
+  <% else %>
+    Users
+  <% end %>
+</div>
+
+<% if is_admin? %>
+  <div class="new_wrapper">
+    <%= link_to 'New User', new_user_path %>
+  </div>
 <% end %>
 
 <table>

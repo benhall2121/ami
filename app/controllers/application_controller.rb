@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def find_section_page(page_type)
+    puts ''
+    puts 'find section page'
+    @section = Section.find(:first, :conditions => ['page_type = ?', page_type], :order => 'created_at desc')
+  end
+
   def current_user
     @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
   end

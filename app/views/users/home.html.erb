@@ -13,11 +13,18 @@
   </div>	
   <div class="how_it_works_div">
   	<div class="section_header">
-  		HOW IT WORKS
+  		<% if !@section.page_title.nil? %>
+        <%= @section.page_title %>
+      <% else %>
+        HAHAHAHAHAHA
+      <% end %>
   	</div>
   	<div>
-  		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tellus diam, fringilla accumsan faucibus eget, tempor in mi. Cras eu est sit amet elit tempus condimentum id vel arcu. Nulla tortor metus, molestie quis vehicula eget, adipiscing hendrerit eros. Suspendisse sed orci non ligula cursus pellentesque. Ut tincidunt, massa vitae bibendum tempor, nisl nisi convallis magna, non ultricies lacus ante a lacus. Ut ipsum erat, bibendum in malesuada in, pellentesque ac odio. Sed tempus commodo commodo. Nam luctus, nunc ut suscipit luctus, est nunc iaculis arcu, et aliquet justo purus vitae risus. Aliquam erat volutpat. Quisque condimentum enim in eros mollis vel porttitor leo pharetra.
+  		<% if !@section.page_title.nil? %>
+        <%= my_simple_format(@section.content) %>
+      <% end %>
   	</div>
   </div>
+
 </div>
 

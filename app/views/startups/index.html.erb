@@ -1,20 +1,22 @@
-<h1>Startups</h1>
+<div class="page_header">
+  Startups
+</div>
 
-
-<% @startups.each do |startup| %>
-  <div class="index_each_startup">
-    <div class="index_each_startup_logo_div">
-      <%= link_to image_tag(startup.startup_logo.url(:icon), :class => 'index_each_startup_logo_image'), startup %>
-    </div>
-    <div class="index_each_startup_text">
-      <div class="index_each_startup_name">
-        <%= link_to startup.startup_name, startup %>
-      </div>
-      <div class="index_each_startup_desc">
-        <%= startup.brief_description %>
-      </div>
-    </div>
+<% if is_admin? %>
+  <div class="new_wrapper">
+    <%= link_to 'New Startup', new_startup_path %>
   </div>
 <% end %>
+
+<%= form_tag startups_path, :method => 'get', :id => "startups_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <div id="startups">
+    <%= render 'startups' %>
+  </div>
+<% end %>
+
 
 

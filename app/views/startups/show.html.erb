@@ -1,50 +1,30 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>User:</b>
-  <%= @startup.user.email %>
-</p>
-
-<p>
-  <b>Startup name:</b>
-  <%= @startup.startup_name %>
-</p>
-
-<p>
-  <b>Startup Contact Email:</b>
-  <%= @startup.email %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @startup.address %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @startup.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @startup.state %>
-</p>
-
-<p>
-  <b>Zip:</b>
-  <%= @startup.zip %>
-</p>
-
-<p>
-  <b>Brief description:</b>
-  <%= @startup.brief_description %>
-</p>
-
-<p>
-<%= image_tag @startup.startup_logo.url(:medium) %> <%= image_tag @startup.startup_logo.url(:small) %> <%= image_tag @startup.startup_logo.url(:icon) %>
-</p>
-
 <% if is_admin? %>
   <%= link_to 'Edit', edit_startup_path(@startup) %> |
   <%= link_to 'Delete', @startup, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>
+
+<!-- **********  startup_wrapper ********** -->
+<div class="startup_wrapper">
+  <div class="startup_name_div">
+    <%= image_tag @startup.startup_logo.url(:secondIcon), :style => 'vertical-align:middle; padding:5px;'  %><%= @startup.startup_name %>
+  </div>
+
+  <!-- **********  startup_body_wrapper ********** -->
+  <div class="startup_body_wrapper">
+    <div class="startup_body_left">
+      
+
+      <% for description in @startup.descriptions %>
+        <%= render "descriptions/description_show", :description => description %>
+      <% end %>
+
+    </div>
+    <div class="startup_body_right">
+      <div class="brief_description_details">
+        <%= @startup.brief_description %>
+      </div>
+    </div>
+  </div>
+  <!-- **********  END startup_body_wrapper ********** -->
+</div>
+<!-- **********  END startup_wrapper ********** -->

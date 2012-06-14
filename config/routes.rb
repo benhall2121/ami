@@ -1,5 +1,11 @@
 Ami::Application.routes.draw do
   
+  resources :sections
+
+  resources :emails
+
+  resources :faqs
+
   resources :descriptions
 
   resources :startups
@@ -14,7 +20,13 @@ Ami::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
 
+  get "about" => "sections#about", :as => "about"
+
+  get "editSection" => "sections#edit", :as => "editSection"
+
   get "admin" => "users#admin", :as => "admin"
+
+  match '/emails/add_email' => 'emails#add_email'
 
   root :to => "users#home"
 

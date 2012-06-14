@@ -1,0 +1,30 @@
+<div class="page_header">
+  Emails
+</div>
+
+
+
+
+<% @emails.each do |email| %>
+
+
+  
+  <div class="index_each_startup">
+    <div>
+      <span class="bold">Date:</span> <%= email.created_at %>
+    </div>
+    <div>
+      <span class="bold">From:</span> <%= email.from %>
+    </div>
+    <div>
+      <span class="bold">Subject:</span> <%= email.subject %>
+    </div>
+    <div>
+      <span class="bold">Message:</span><br/>
+      <%= email.message.gsub(/\n/, '<br/>').html_safe %>
+    </div>
+  </div>
+
+
+<% end %>
+

@@ -25,4 +25,23 @@ module ApplicationHelper
     link_to_function(name, ("add_fields(this, '#{association}', '#{escape_javascript(fields)}')"))
   end
 
+  def my_simple_format(text, html_options={}, options={})
+    text = '' if text.nil?
+    text = text.dup
+    start_tag = tag('p', html_options, true)
+    text = sanitize(text) unless options[:sanitize] == false
+    text = text.to_str
+    text.gsub!(/\r\n?/, "\n")                    # \r\n and \r -> \n
+    text.gsub!(/\n\n+/, "</p>\n\n#{start_tag}")  # 2+ newline  -> paragraph
+    text.gsub!(/([^\n]\n)(?=[^\n])/, '\1<br />') # 1 newline   -> br
+    text.html_safe
+  end
+
+  def sortable(column, title = nil)
+    title ||= column.titleize
+    css_class = column == sort_column ? "current #{sort_direction}" : nil
+    direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+    link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
+  end
+
 end

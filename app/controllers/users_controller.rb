@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def home
     #@startups = Startup.find(:all, :conditions => ['active = ?', true], :limit => 20)
     @startups = Startup.find(:all, :limit => 20)
+    find_section_page('how_it_works')
   end
 
   def index

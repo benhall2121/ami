@@ -14,3 +14,6 @@ gem 'rake', '0.9.2.2'
 gem "mail", "2.2.19"
 # Used to upload images
 gem 'paperclip'
+
+gem 'will_paginate', '3.0.pre2'
+gem 'jquery-rails'

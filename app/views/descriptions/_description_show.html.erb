@@ -1,0 +1,28 @@
+
+<div class="description_wrapper">
+
+  <% if description.title != '' %>
+  <div class="description_title">
+    <%= description.title %>
+  </div>
+  <% end %>
+
+  <% if description.desc_type != '' %>
+  <div class="description_media">
+    <% if description.desc_type == 'video' %>
+      <iframe width="640" height="480" src="http://www.youtube.com/embed/<%= description.video_code %>" frameborder="0" allowfullscreen></iframe>
+    <% elsif description.desc_type == 'photo' %>
+      <%= image_tag description.upload_content.url(:medium640)  %>
+    <% end %>
+
+  </div>
+  <% end %>
+
+  <% if description.desc != '' %>
+  <div class="description_details">
+    <%= my_simple_format(description.desc) %>
+  </div>
+  <% end %>
+
+</div>
+

@@ -1,0 +1,31 @@
+<html>
+<head>
+
+</head>
+
+<body>
+
+
+AMI Team,<br/><br/>
+
+You got a new email. It is from <%= @email.from %> and it is being sent to <%= @email.to %>.
+
+<br/><br/>
+
+<b>Subject:</b> <%= @email.subject %>
+
+<br/>
+
+<b>Message:</b><br/> 
+<%= simple_format(@email.message) %>
+
+
+<br/><br/>
+
+
+</body>
+</html>
+
+
+
+

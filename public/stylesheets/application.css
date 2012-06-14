@@ -12,8 +12,22 @@ a{
   color:#595959;	
 }
 
+textarea, input[type=text] { 
+  resize: none; 
+  outline: none; 
+  border: 1px solid #ccc; 
+}
+
+textarea:focus, input[type=text]:focus { 
+  outline: none; 
+}
+
 a:hover{
   color:#121212;	
+}
+
+.bold{
+  font-weight:bold;
 }
 
 .left{
@@ -27,6 +41,21 @@ a:hover{
 .section_header{
   font-weight:bold;
   font-size:15px;
+}
+
+.page_header{
+  font-weight:bold;
+  font-size:32px;
+  padding:5px 0;
+}
+
+.cool_textfield{  
+  width:50%;
+}
+
+.cool_textarea{
+  width:100%;
+  height:100px;
 }
 
 /******************************  Main Layout ******************************/
@@ -158,11 +187,222 @@ a:hover{
 .index_each_startup_desc{
 }
 
+  /****** STARTUPS NEW/EDIT ******/
+
+.startup_wrapper{
+  padding:10px;
+  margin:10px 0;
+  border:1px solid #CCC;
+
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.startup_main_info_wrapper{
+  padding:10px;
+  border:1px solid #CCC;
+
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.startup_main_info_table{
+  width:100%;
+}
+
+  /****** END STARTUPS NEW/EDIT ******/
+
+.startup_body_left{
+  display:inline-block;
+  width:70%;
+  min-width:640px;
+  padding:2px 15px 10px 10px;
+  vertical-align:top;
+
+  border-right:1px solid #DDDDDD;
+}
+
+.startup_body_right{
+  display:inline-block;
+  width:26%;
+  min-width:250px;
+  vertical-align:top;
+  padding-top:2px;
+}
+
+ .startup_name_div{
+  font-weight:bold;
+  font-size:60px;
+  padding:0 5px;
+}
+
 /******************************  END STARTUPS ******************************/
 
 
+/******************************  FAQS ******************************/
+
+.faq_question{}
+.faq_question:hover{ color:#121212; cursor:pointer; }
+.faq_answer{padding:6px 20px; display:none;}
+
+/***************************   END FAQS   ***************************/
 
 
+/****************     EMAILS     ****************/ 
+
+.email_table{
+  width:100%;
+  text-align:left;
+}
+
+.email_table td{ 
+}
+
+.email_form_wrapper{
+  border:1px solid #CCC;
+  padding:15px 15px 7px 15px;
+  font-size:14px;
+  margin-top:20px;
+  
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(top, #ffffff 0%, #eeeeee 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ffffff 0%,#eeeeee 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ffffff 0%,#eeeeee 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ffffff 0%,#eeeeee 100%); /* IE10+ */
+  background: linear-gradient(top, #ffffff 0%,#eeeeee 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+  
+}
+
+.email_label_wrapper{
+  margin:3px 3px 3px 7px;
+  vertical-align:top;
+}
+
+
+.email_field{  
+  width:50%;
+}
+
+.email_subject_field{
+  width:100%; 
+}
+
+.email_message_field{
+  width:100%;
+  height:100px;
+}
+
+.email_submit_wrapper{
+  text-align:right; 
+}
+
+.email_submit_wrapper button, .submitVideoButton{
+  font-size:14px;
+  padding:4px 25px;
+  margin:2px 5px;
+  border:1px solid #CCC;
+  color:#333;
+  
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -khtml-border-radius: 9px;
+  border-radius: 9px;
+  
+  background: #d6d273; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #d6d273 0%, #d6d5c2 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#d6d273), color-stop(100%,#d6d5c2)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, #d6d273 0%,#d6d5c2 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, #d6d273 0%,#d6d5c2 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, #d6d273 0%,#d6d5c2 100%); /* IE10+ */
+  background: radial-gradient(center, ellipse cover, #d6d273 0%,#d6d5c2 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d273', endColorstr='#d6d5c2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.email_submit_wrapper button:hover, .submitVideoButton:hover{
+  cursor:pointer;
+  border:1px solid #888; 
+}
+
+/****************     END EMAILS    ****************/ 
+
+
+/****************     DESCRIPTIONS    ****************/
+
+.description_wrapper{
+  margin-bottom:20px;
+}
+
+.description_media{
+  border:2px dashed #CCC;
+  padding:10px;
+  margin:10px 0;
+  min-width:640px;
+  min-height:360px;
+  text-align:center;
+}
+
+.description_title{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.description_media_table{
+  margin:100px auto 0 auto;
+}
+
+.description_media_table td{
+  padding:5px 15px;
+}
+
+.photoIconUpload:hover, .videoIconUpload:hover{
+  cursor:pointer;
+}
+
+.description_details{
+  padding:0 10px;
+  margin:5px 0;
+  min-width:640px;
+}
+
+.description_details textarea{
+  width:100%;
+  height:100px;
+}
+
+.brief_description_details{
+  padding:0 10px;
+  margin:5px 0;
+}
+
+.brief_description_details textarea{
+  width:100%;
+  height:200px;
+}
+
+.video_div{
+  padding:20px;
+}
+
+.submitVideoButton{
+  margin:8px auto;
+  width:100px;
+  text-align:center;  
+}
+
+
+/****************     END DESCRIPTIONS    ****************/ 
 
 
 

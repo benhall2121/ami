@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120523212726) do
+ActiveRecord::Schema.define(:version => 20120614195826) do
 
   create_table "descriptions", :force => true do |t|
     t.string   "title"
@@ -24,6 +24,31 @@ ActiveRecord::Schema.define(:version => 20120523212726) do
     t.integer  "upload_content_file_size"
     t.datetime "upload_content_updated_at"
     t.integer  "startup_id"
+    t.string   "video_code"
+  end
+
+  create_table "emails", :force => true do |t|
+    t.string   "to"
+    t.string   "from"
+    t.string   "subject"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "faqs", :force => true do |t|
+    t.string   "question"
+    t.string   "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sections", :force => true do |t|
+    t.string   "page_type"
+    t.string   "page_title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "startups", :force => true do |t|

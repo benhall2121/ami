@@ -1,25 +1,54 @@
-<div class="description_wrapper"> 
-  <div class="field">
-    <%= f.label :title %><br />
+
+<div class="description_wrapper">
+
+  <div class="description_title">
+    Description Title:<br />
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :desc_type %><br />
-    <%= f.text_field :desc_type %>
+  <div class="description_media">
+    <table class="description_media_table">
+      <tr>
+        <td colspan=2>Add An Element:</td>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to image_tag('youTubeIcon.jpg'), '#description_url', :class => 'videoIconUpload', :id => 'videoIconUpload' %>
+        </td>
+        <td>
+          <%= image_tag('photoIcon.jpg', :class => 'photoIconUpload') %>
+        </td>
+      </tr>
+      <tr>
+        <!-- Hidden Fields -->
+        <td colspan=2><%= f.file_field :upload_content, :class => 'upload_content_field', :style => 'visibility:hidden;' %>
+          <%= f.hidden_field :desc_type, :class => 'description_type' %>
+          <%= f.hidden_field :video_code, :class => 'video_code' %>
+          <%= link_to '', '', :class=> 'videovideo', :style => 'visibility:hidden;' %>
+        </td>
+        <!-- END Hidden Fields -->
+      </tr>
+    </table>
+    <div class="file_name">
+    </div>
+
+    <div class="description_url_div" style="display:none;">
+      <div class="video_div">
+        YouTube URL: <%= f.text_field :url, :class => 'description_url' %><br />
+        <div class="submitVideoButton">
+          Submit
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :desc %><br />
+
+  <div class="description_details">
+    Description of Element:<br />
     <%= f.text_area :desc %>
   </div>
-  <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    <%= f.label 'Upload Content' %><br />
-    <%= f.file_field :upload_content %>
-  </div>
+
+
   <div>
     <%= link_to_remove_fields "Remove Description", f %>
   </div>
 </div>
+

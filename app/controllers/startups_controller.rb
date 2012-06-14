@@ -5,12 +5,8 @@ class StartupsController < ApplicationController
   # GET /startups
   # GET /startups.xml
   def index
-    @startups = Startup.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @startups }
-    end
+    #.order(sort_column + " " + sort_direction)
+    @startups = Startup.search(params[:search]).order('created_at desc').paginate(:per_page => 5, :page => params[:page])
   end
 
   # GET /startups/1
@@ -21,6 +17,8 @@ class StartupsController < ApplicationController
     else
       @startup = Startup.find(params[:id])
     end
+
+    @descriptions = @startup.descriptions.find(:all)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -33,6 +31,8 @@ class StartupsController < ApplicationController
   def new
     @startup = Startup.new
     @users = User.find(:all, :conditions => ['user_type = "User"'])
+
+    description = @startup.descriptions.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,6 +49,7 @@ class StartupsController < ApplicationController
   # POST /startups
   # POST /startups.xml
   def create
+    @users = User.find(:all, :conditions => ['user_type = "User"'])
     @startup = Startup.new(params[:startup])
 
     respond_to do |format|
@@ -56,6 +57,7 @@ class StartupsController < ApplicationController
         format.html { redirect_to(@startup, :notice => 'Startup was successfully created.') }
         format.xml  { render :xml => @startup, :status => :created, :location => @startup }
       else
+        description = @startup.descriptions.build
         format.html { render :action => "new" }
         format.xml  { render :xml => @startup.errors, :status => :unprocessable_entity }
       end
@@ -65,6 +67,7 @@ class StartupsController < ApplicationController
   # PUT /startups/1
   # PUT /startups/1.xml
   def update
+    @users = User.find(:all, :conditions => ['user_type = "User"'])
     @startup = Startup.find(params[:id])
 
     respond_to do |format|

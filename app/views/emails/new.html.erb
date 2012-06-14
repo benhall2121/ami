@@ -1,0 +1,17 @@
+
+<div class="page_header">
+  <% if !@section.nil? %>
+    <%= @section.page_title %>
+  <% else %>
+  	Contact Us
+  <% end %>
+</div>
+
+<% if !@section.nil? %>
+  <div class="page_content_wrapper">
+    <%= simple_format(@section.content) %>
+  </div>
+<% end %>
+
+<%= render 'form' %>
+

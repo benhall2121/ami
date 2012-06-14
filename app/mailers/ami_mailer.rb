@@ -12,4 +12,9 @@ class AmiMailer < ActionMailer::Base
     @full_url_path = full_path
     mail(:to => user.email, :from => 'Website@benerino.com', :subject => "Welcome to AMI")
   end
+
+  def emailInfo(email)
+    @email = email
+    mail(:to => @email.to, :from => 'Website@benerino.com', :subject => @email.subject)
+  end
 end

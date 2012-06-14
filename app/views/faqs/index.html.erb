@@ -1,0 +1,31 @@
+<div class="page_header">
+  FAQs
+</div>
+
+<% if is_admin? %>
+<div class="new_wrapper">
+  <%= link_to 'New Faq', new_faq_path %>
+</div>
+<% end %>
+
+
+<% @faqs.each do |faq| %>
+  <div class="faq_wrapper">
+    <div class="faq_question">
+      Q: <%= faq.question %> 
+    </div>
+    
+    <% if is_admin? %>
+      <div>
+        <%= link_to 'Edit', edit_faq_path(faq), :class => 'admin_text' %> 
+        <%= link_to 'Delete', faq, :confirm => 'Are you sure?', :method => :delete, :class => 'admin_text' %>
+      </div>
+    <% end %>
+
+    <div class="text faq_answer">
+      A: <%= faq.answer %>
+    </div>
+  </div>
+<% end %>
+
+
