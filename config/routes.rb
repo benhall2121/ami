@@ -1,5 +1,9 @@
 Ami::Application.routes.draw do
   
+  resources :accounts
+
+  resources :transactions
+
   resources :sections
 
   resources :emails
@@ -20,6 +24,8 @@ Ami::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
 
+  post "card_for_user" => "users#card_for_user", :as => "card_for_user"
+
   get "about" => "sections#about", :as => "about"
 
   get "editSection" => "sections#edit", :as => "editSection"
@@ -27,6 +33,7 @@ Ami::Application.routes.draw do
   get "admin" => "users#admin", :as => "admin"
 
   match '/emails/add_email' => 'emails#add_email'
+  match '/transactions/new_transaction' => 'transactions#new_transaction'
 
   root :to => "users#home"
 

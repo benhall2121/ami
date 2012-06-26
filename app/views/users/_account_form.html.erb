@@ -1,0 +1,77 @@
+<script type="text/javascript">
+
+$(document).ready(function(){
+  Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
+  return account.setupForm();
+});
+
+
+account = {
+  setupForm: function() {
+    return $('#user_form').submit(function() {
+      $('input[type=submit]').attr('disabled', true);
+      if ($('#card_number').length) {
+        account.processCard();
+        return false;
+      } else {
+        return true;
+      }
+    });
+  },
+  processCard: function() {
+    var card;
+    card = {
+      number: $('#card_number').val(),
+      cvc: $('#card_code').val(),
+      expMonth: $('#card_month').val(),
+      expYear: $('#card_year').val()
+    };
+    return Stripe.createToken(card, account.handleStripeResponse);
+  },
+  handleStripeResponse: function(status, response) {
+    if (status === 200) {
+      $('#stripe_card_token').val(response.id);
+      return $('#user_form')[0].submit();
+    } else {
+      $('#stripe_error').text(response.error.message);
+      return $('input[type=submit]').attr('disabled', false);
+    }
+  }
+};
+
+
+</script>
+
+<% if @user.stripe_customer_token.present? %>
+  <div>
+    The Credit Card on file ends with: <%= @user.last_four_cc %>
+  </div>
+<% else %>
+  <!-- FORM -->
+  <%= form_tag card_for_user_path, :id => 'user_form'  do |f| %>
+    <div class="field">
+      <%= label_tag :card_number, "Credit Card Number" %>
+      <%= text_field_tag :card_number, nil %>
+    </div>
+    <div class="field">
+      <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+      <%= text_field_tag :card_code, nil %>
+    </div>
+    <div class="field">
+      <%= label_tag :card_month, "Card Expiration" %>
+      <%= select_month nil, {:add_month_numbers => true}, {:id => "card_month"} %>
+      <%= select_year nil, {:start_year => Date.today.year, :end_year => Date.today.year+15}, {:id => "card_year"} %>
+    </div>
+
+    <%= hidden_field_tag :stripe_card_token %>
+
+    <div id="stripe_error">
+      <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+    </div>
+
+    <div>
+      <%= submit_tag 'Save Credit Card' %>
+    </div>
+  <% end %>
+  <!-- END FORM -->
+<% end %>

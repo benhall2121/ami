@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
-  before_filter :require_admin, :except => ['home', 'index', 'show']
+  before_filter :require_admin, :except => ['home', 'index', 'show', 'edit', 'update', 'card_for_user']
+  before_filter :require_admin_or_contributor, :only => ['edit', 'update', 'card_for_user']
 
   def home
     #@startups = Startup.find(:all, :conditions => ['active = ?', true], :limit => 20)
@@ -45,7 +46,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    if admin?
+      @user = User.find(params[:id])
+    else
+      @user = User.find(current_user.id)
+    end
+
+    @transactions = @user.transactions.find(:all, :order => 'created_at desc')
   end
 
   # POST /users
@@ -69,7 +76,11 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:id])
+    if admin?
+      @user = User.find(params[:id])
+    else
+      @user = User.find(current_user.id)
+    end
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -80,6 +91,20 @@ class UsersController < ApplicationController
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  def card_for_user
+    @user = User.find(current_user.id)
+    @user.stripe_card_token = params[:stripe_card_token]
+    
+    #@user.last_four_cc = params[:card_number][-4,4]
+
+    if @user.save_with_payment
+      redirect_to @user, :notice => "Your Credit Card has been added and you can now contribute to startups!"
+    else
+      render :new
+    end
+
   end
 
   # DELETE /users/1

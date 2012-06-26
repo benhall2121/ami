@@ -25,10 +25,28 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def admin?
+    if current_user && current_user.admin?
+      return true
+    else
+      return false
+    end
+  end
+
   def require_admin
-    unless current_user && current_user.admin?
+    unless admin?
       redirect_to root_path, :notice => 'You must be an admin to view that page.'
     end
+  end
+
+  def require_admin_or_contributor
+    unless admin? || current_user.user_type == 'Contributor'
+      redirect_to root_path, :notice => 'You are not authorized to view that page.'
+    end
+  end
+
+  def transaction_amount(transaction_type, startup_id)
+    Transaction.sum(:amount, :conditions => ['transaction_type = ? AND startup_id = ?', transaction_type, startup_id]).to_f
   end
 
 end

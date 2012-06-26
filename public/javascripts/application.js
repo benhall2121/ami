@@ -140,6 +140,74 @@ $(document).ready(function() {
       return false;
     });
 
+    $(".donateButton").live('click', function(){
+
+      var other=false;
+
+      //If the user is not a contributor, they can not donate money
+      if($('#is_contributor').val() == 'false'){
+      	alert("In order to donate, Please login as a contributor.");
+      	return false;
+      }
+
+      //Transaction Fields
+      startup_id = $('#startup_id').val();
+      donate_amount = $('#donate_amount').val();
+
+      //If the Amount drop down is other grab the amount from the text field
+      if(donate_amount == 'Other'){
+      	donate_amount = $('#other_amount_field').val();
+      	other = true;
+      }
+
+      //If the amount is nothing don't let the donation to go through
+      if(donate_amount == ''){
+      	alert("Please Select an Amount to Donate.");
+      	return false;
+      }
+
+      var current_href = $(this).attr('href');
+      var new_href = current_href + '&transaction[amount]=' + donate_amount + '&other=' + other;
+
+      $(this).attr('href', new_href);
+
+      //Send the Donation
+     /* $.post('/transactions/new_transaction', {"transaction": {"amount": donate_amount, "startup_id": startup_id, "transaction_type": "donation"}}, null);
+
+      alert("Thanks for donating. You are AWESOME!");
+
+      var amount_to_go = unFormat($('#amount_to_go').html());
+      var total_raised = unFormat($('#total_raised').html());
+
+
+      var new_amount_to_go = amount_to_go-parseFloat(donate_amount);
+      var new_total_raised = total_raised+parseFloat(donate_amount);
+      var new_percentage = (parseFloat(new_total_raised/(amount_to_go+total_raised)).toFixed(2))*100;
+
+      $('#amount_to_go').html(formatCurrency(new_amount_to_go));
+      $('#total_raised').html(formatCurrency(new_total_raised));
+      $('#percentage_display').html(formatPercentage(new_percentage));
+*/
+    });
+
+	
+    $('#other_amount_field').keyup(function(){
+      var unformatedValue = unFormat($(this).val());
+      $(this).val(unformatedValue);
+      $('#transaction_amount').val(parseFloat(unformatedValue).toFixed(2));
+      calc_transaction_totals();
+    });
+
+    $("#donate_amount").live('change', function(){
+    	if($(this).val() == 'Other'){
+    	  $('.other_amount').show();
+    	} else {
+    	  $('.other_amount').hide();
+    	}
+    });
+
+
+
 });
 
 
@@ -191,5 +259,50 @@ function getMyParameterByName(url, name) {
                     .exec(url);
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
+
+function formatCurrency(num) {
+
+    if(num < 0 || !isNaN(num)){
+    	num = num.toString();    
+    }
+    //remove everything but numbers and .	
+    num = num.replace(/[^0-9.-]/g, '');
+    //check if it is a valid number
+    num = isNaN(num) || num === '' || num === null ? 0.00 : num;
+    //set the number to two decimal places
+    num = parseFloat(num).toFixed(2);
+    //add $ and commas
+    num = '$' + num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"); 
+    return num
+}
+
+function unFormat(num) {
+  if(isNaN(num)){	
+    if(num == ''){ num = '0'; }	
+    //remove everything but numbers and .	
+    num = num.replace(/[^\d.]/g, '');
+  }
+  return num
+}
+
+function formatPercentage(percent) {
+
+    if(percent < 0 || !isNaN(percent)){
+    	percent = percent.toString();    
+    }
+    //remove everything but numbers and .	
+    percent = percent.replace(/[^0-9.]/g, '');
+    //check if it is a valid number
+    percent = isNaN(percent) || percent === '' || percent === null ? "0" : percent;
+    //add % and commas
+    percent = percent.replace(/(\d)(?=(\d{3})+(?!\d))/g, "%1,") + '%'; 
+    return percent
+}
+
+function calc_transaction_totals(){
+  var total = $('#transaction_amount').val();
+  $('#total_amount').html(formatCurrency(total));
+}
+
 
 

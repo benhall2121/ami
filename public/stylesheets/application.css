@@ -12,13 +12,13 @@ a{
   color:#595959;	
 }
 
-textarea, input[type=text] { 
+textarea, input[type=text], input[type=password] { 
   resize: none; 
   outline: none; 
   border: 1px solid #ccc; 
 }
 
-textarea:focus, input[type=text]:focus { 
+textarea:focus, input[type=text]:focus, input[type=password]:focus { 
   outline: none; 
 }
 
@@ -38,6 +38,34 @@ a:hover{
   text-align:right;
 }
 
+/* DEFAULT BUTTON */
+.default_button, .email_submit_wrapper button, .submitVideoButton{
+  text-align:center;
+  border:1px solid #CCC;
+  color:#333;
+  
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -khtml-border-radius: 9px;
+  border-radius: 9px;
+  
+  background: #d6d273; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #d6d273 0%, #d6d5c2 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#d6d273), color-stop(100%,#d6d5c2)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, #d6d273 0%,#d6d5c2 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, #d6d273 0%,#d6d5c2 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, #d6d273 0%,#d6d5c2 100%); /* IE10+ */
+  background: radial-gradient(center, ellipse cover, #d6d273 0%,#d6d5c2 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d273', endColorstr='#d6d5c2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.default_button:hover, .email_submit_wrapper button:hover, .submitVideoButton:hover{
+  cursor:pointer;
+  border:1px solid #888; 
+}
+
+
 .section_header{
   font-weight:bold;
   font-size:15px;
@@ -56,6 +84,10 @@ a:hover{
 .cool_textarea{
   width:100%;
   height:100px;
+}
+
+.controls_wrapper{
+  margin:5px 0;
 }
 
 /******************************  Main Layout ******************************/
@@ -104,6 +136,7 @@ a:hover{
   text-align:center;
   padding:5px 0px;
   font-weight:bold;
+  color:red;
 }
 
 .main_wrapper{
@@ -189,7 +222,7 @@ a:hover{
 
   /****** STARTUPS NEW/EDIT ******/
 
-.startup_wrapper{
+.startup_wrapper, .transaction_wrapper{
   padding:10px;
   margin:10px 0;
   border:1px solid #CCC;
@@ -232,12 +265,49 @@ a:hover{
   min-width:250px;
   vertical-align:top;
   padding-top:2px;
+  padding-left:5px;
 }
 
  .startup_name_div{
   font-weight:bold;
   font-size:60px;
   padding:0 5px;
+}
+
+.donate_section{
+  border-top:1px solid #DDDDDD;
+  padding:10px 10px;
+  margin:5px 0;
+}
+
+.small_header{
+  font-size:12px;
+}
+
+.donateAmount, .donateButton_div{
+  display:inline-block;
+  width:48%;
+  vertical-align:top;
+}
+
+.donateButton_div{
+  padding:7px 0;
+}
+
+.other_amount{
+  display:none;
+}
+
+.donateButton{
+  padding:5px 20px;
+  color:white;
+  font-weight:bold;
+  font-size:18px;
+  text-shadow: 1px 0px 1px rgba(136, 136, 136, 1);
+}
+
+.donateButton:hover{
+  color:white;
 }
 
 /******************************  END STARTUPS ******************************/
@@ -311,28 +381,6 @@ a:hover{
   font-size:14px;
   padding:4px 25px;
   margin:2px 5px;
-  border:1px solid #CCC;
-  color:#333;
-  
-  -moz-border-radius: 9px;
-  -webkit-border-radius: 9px;
-  -khtml-border-radius: 9px;
-  border-radius: 9px;
-  
-  background: #d6d273; /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover, #d6d273 0%, #d6d5c2 100%); /* FF3.6+ */
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#d6d273), color-stop(100%,#d6d5c2)); /* Chrome,Safari4+ */
-  background: -webkit-radial-gradient(center, ellipse cover, #d6d273 0%,#d6d5c2 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover, #d6d273 0%,#d6d5c2 100%); /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover, #d6d273 0%,#d6d5c2 100%); /* IE10+ */
-  background: radial-gradient(center, ellipse cover, #d6d273 0%,#d6d5c2 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d273', endColorstr='#d6d5c2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-}
-
-.email_submit_wrapper button:hover, .submitVideoButton:hover{
-  cursor:pointer;
-  border:1px solid #888; 
 }
 
 /****************     END EMAILS    ****************/ 
@@ -381,9 +429,10 @@ a:hover{
   height:100px;
 }
 
-.brief_description_details{
-  padding:0 10px;
+.brief_description_details, .donation_raised_wrapper{
+  padding:0 10px 10px 10px;
   margin:5px 0;
+  font-weight:bold;
 }
 
 .brief_description_details textarea{
@@ -401,8 +450,160 @@ a:hover{
   text-align:center;  
 }
 
+.percentage_display_wrapper, .total_raised{
+  font-size:12px;
+  font-weight:normal;
+}
+
+.percentage_display{
+  font-size:38px;
+}
+
+.donation_percentage_wrapper{
+  margin:3px 0 0 0;
+}
+
+.donation_percentage_chart_outer, .donation_percentage_chart_inner{
+  border:1px solid #ccc;
+
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.donation_percentage_chart_inner{
+  background-color:#D9D8BA;
+}
 
 /****************     END DESCRIPTIONS    ****************/ 
+
+
+/******************************  CONTRIBUTORS  ******************************/
+
+.all_contributors_wrapper{
+  text-align:center;
+}
+
+.each_contributors_wrapper{
+  display:inline-block;
+  vertical-align:top;
+  width:160px;
+  margin:5px 5px;
+  word-wrap: break-word;
+}
+
+.image_border{
+  vertical-align:middle; 
+  padding:5px; 
+  border:1px solid #ccc;
+}
+
+
+/******************************  END CONTRIBUTORS  ******************************/
+
+
+.transaction_info_wrapper{
+  padding:8px 8px 5px 8px;
+  background-color:#ddd;
+
+
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.transaction_startup_logo, .transaction_startup_info, .transaction_startup_amount{
+  display:inline-block;
+  vertical-align:top;
+  padding:0 5px;
+}
+
+.transaction_startup_logo{
+  width:65px;
+}
+
+.transaction_startup_info{
+  width:630px;
+}
+
+.transaction_startup_amount{
+  width:220px;
+  text-align:right;
+}
+
+.transaction_total_wrapper{
+  margin-top:10px;
+  padding:15px;
+  text-align:right;
+  background-color:#D9D8BA;
+  font-size:25px;
+
+
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.transaction_submit_button_div{
+  text-align:right;
+  margin-top:10px;
+}
+
+.transaction_table{
+  width:100%;
+  margin:10px 0;
+}
+
+.transaction_table tr.header{
+  font-weight:bold;
+  font-size:20px;
+}
+
+.transaction_table tr td{
+  padding:3px 5px;
+  border-bottom:1px dashed #D9D8BA;
+}
+
+
+/******************************  TRANSACTIONS  ******************************/
+
+/******************************  END TRANSACTIONS  ******************************/
+
+
+
+
+/******************************  USERS  ******************************/
+
+.user_header_nav{
+  border-bottom:1px solid #D9D8BA;
+}
+
+.user_header_nav div{
+  display:inline-block;
+  border:1px solid #ccc;
+  border-bottom:none;
+  padding:5px 10px;
+
+
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -khtml-border-top-left-radius: 5px;
+  -khtml-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.user_header_nav div.selected, .user_header_nav_div:hover{
+  background-color:#D9D8BA;
+  cursor:pointer;
+}
+
+/******************************  END USERS  ******************************/
 
 
 

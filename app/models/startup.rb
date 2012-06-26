@@ -1,6 +1,7 @@
 class Startup < ActiveRecord::Base
   belongs_to :user
   has_many :descriptions
+  has_many :transactions
 
 
   validates_presence_of :startup_name, :message => "Startup Name cannot be blank."

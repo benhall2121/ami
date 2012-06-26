@@ -1,11 +1,11 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<% if is_admin? %>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %>
+<% if is_current_user(@user) || is_admin? %>
+<div class="controls_wrapper">
+ <%= link_to 'Edit Your Profile', edit_user_path(current_user) %>
+</div>
 <% end %>
+
+<div>
+  <%= image_tag(@user.photo.url(:small), :class => 'image_border')  %><br/>
+  <%= @user.email %>
+</div>

@@ -1,6 +1,62 @@
-<h1>Editing user</h1>
+<script type="text/javascript">
 
-<%= render 'form' %>
+$(document).ready(function(){
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+  page = getMyParameterByName(window.location, "page");
+
+  if(page != null){
+    setPage(page);
+  }
+
+  $('.user_header_nav_div').click(function(){
+    page_name = $(this).attr('id');
+	setPage(page_name);
+  });
+});
+
+function setPage(page){
+  $('.user_pages').hide();
+  $('.selected').removeClass('selected');
+
+  if(page != '' && page != null){
+  	$('#user_' + page).show();
+  	$('#' + page).addClass('selected');
+  }
+
+  if($("div.user_pages:visible").length == 0){
+  	$('#user_profile').show();
+  	$('#profile').addClass('selected');
+  };
+}
+
+
+</script>
+
+<div class="page_header">
+  Profile
+</div>
+
+<div class="user_header_nav">
+  <div id="profile" class="user_header_nav_div selected">
+  	Profile
+  </div>
+  <div id="account" class="user_header_nav_div">
+  	Credit Card
+  </div>
+  <div id="transaction" class="user_header_nav_div">
+    Your Transactions
+  </div>
+</div>
+
+<div id="user_profile" class="user_pages">
+  <%= render 'form' %>
+</div>
+
+<div id="user_account" class="user_pages" style="display:none;">
+  <%= render 'account_form' %>
+</div>
+
+<div id="user_transaction" class="user_pages" style="display:none;">
+  <%= render 'transaction_list' %>
+</div>
+

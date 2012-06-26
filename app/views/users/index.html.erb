@@ -8,20 +8,19 @@
 </div>
 
 <% if is_admin? %>
-  <div class="new_wrapper">
-    <%= link_to 'New User', new_user_path %>
+  <div class="controls_wrapper">
+    <%= link_to (!params[:user_type].nil? ? 'New ' + params[:user_type] : 'New User'), new_user_path %>
   </div>
 <% end %>
 
-<table>
-  <tr>
-    <th>Email</th>
-  </tr>
+<div class="all_contributors_wrapper">
+ 
+  <% @users.each do |user| %>
+    <div class="each_contributors_wrapper">
+      <%= link_to image_tag(user.photo.url(:small), :class => 'image_border'), user  %><br/>
+      <%= link_to user.email, user %>
+    </div>
+  <% end %>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= link_to user.email, user %></td>
-  </tr>
-<% end %>
-</table>
+</div>
 

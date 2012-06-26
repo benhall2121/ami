@@ -23,6 +23,53 @@
       <div class="brief_description_details">
         <%= @startup.brief_description %>
       </div>
+      <div class="donation_raised_wrapper">
+
+        <div class="percentage_display_wrapper">
+          <span class="percentage_display" id="percentage_display"><%= @percent_raised %>%</span> raised, <span id="amount_to_go"><%= number_to_currency(@amount_to_go, :precision => 2) %></span> to go
+        </div>
+
+        <!-- *****  donation_percentage_wrapper  ***** -->
+        <div class="donation_percentage_wrapper">
+          <div class="donation_percentage_chart_outer">
+            <div class="donation_percentage_chart_inner" style="width:<%= @percent_raised %>%;">
+              &nbsp;
+            </div>
+          </div>
+        </div>
+        <!-- *****  END donation_percentage_wrapper  ***** -->
+
+        <div class="total_raised">
+          Total Raised: <span id="total_raised"><%= number_to_currency(@amount_raised, :precision => 2) %></span>
+        </div>
+
+      </div>
+      <div class="donate_section">
+        <div class="small_header">
+          Amount to Donate:
+        </div>
+
+        <!-- *****  donate_wrapper  ***** -->
+        <div class="donate_wrapper">
+          <div class="donateAmount">
+            <%= select_tag :donate_amount, options_for_select(donation_amount_sel) %>
+          </div>
+          <div class="donateButton_div">
+            <% if !current_user.nil? %>
+              <%= link_to 'Donate', new_transaction_path(:transaction => {:transaction_type => 'donation', :user_id => current_user.id, :startup_id => @startup.id}), :class => 'default_button donateButton' %>
+            <% else %>
+              <%= link_to 'Donate', new_transaction_path(:transaction => {:transaction_type => 'donation', :startup_id => @startup.id}), :class => 'default_button donateButton' %>
+            <% end %>
+          </div>
+          <div class="other_amount small_header">
+            Other Amount: $<%= text_field_tag :other_amount_field %>
+          </div>
+          <%= hidden_field_tag :is_contributor, is_contributor? %>
+          <%= hidden_field_tag :startup_id, @startup.id %>
+        </div>
+        <!-- *****  END donate_wrapper  ***** -->
+
+      </div>
     </div>
   </div>
   <!-- **********  END startup_body_wrapper ********** -->

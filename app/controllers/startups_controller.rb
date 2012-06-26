@@ -6,7 +6,7 @@ class StartupsController < ApplicationController
   # GET /startups.xml
   def index
     #.order(sort_column + " " + sort_direction)
-    @startups = Startup.search(params[:search]).order('created_at desc').paginate(:per_page => 5, :page => params[:page])
+    @startups = Startup.search(params[:search]).order('created_at desc').paginate(:per_page => 12, :page => params[:page])
   end
 
   # GET /startups/1
@@ -17,6 +17,23 @@ class StartupsController < ApplicationController
     else
       @startup = Startup.find(params[:id])
     end
+
+    @amount_raised = transaction_amount('donation', @startup.id)
+    @percent_raised = ((@amount_raised / @startup.donation_amount)*100)
+
+    if @percent_raised.infinite? || @percent_raised > 100 || @percent_raised.nan? 
+      @percent_raised = 100
+    else
+      @percent_raised = @percent_raised.to_i
+    end
+
+    @amount_to_go = @startup.donation_amount.to_f - @amount_raised.to_f
+
+    if @amount_to_go < 0
+      @amount_to_go = 0
+    end
+
+
 
     @descriptions = @startup.descriptions.find(:all)
 

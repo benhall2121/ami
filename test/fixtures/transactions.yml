@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  amount: MyString
+  transaction_type: MyString
+  user_id: 1
+  startup_id: 1
+
+two:
+  amount: MyString
+  transaction_type: MyString
+  user_id: 1
+  startup_id: 1

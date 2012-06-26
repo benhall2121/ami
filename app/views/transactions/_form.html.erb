@@ -1,0 +1,92 @@
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+  Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
+  
+  var amount = $('#transaction_amount').val();
+  var is_other = getMyParameterByName(location.search, 'other');
+  if(is_other == 'true'){
+    $('#donate_amount').val('Other');
+    $('#donate_amount').trigger('change');
+    $('#other_amount_field').val(amount);
+  } else {
+    $('#donate_amount').val(amount);
+  }
+
+  calc_transaction_totals();
+
+  $('#donate_amount').live('change', function(){
+    var field_val = $(this).val();
+    $('#transaction_amount').val(field_val);
+    calc_transaction_totals();
+    $('#other_amount_field').val(0);
+  })
+});
+
+</script>
+
+<!-- transaction_wrapper -->
+<div class="transaction_wrapper">
+
+  <!-- FORM -->
+  <%= form_for(@transaction) do |f| %>
+
+  <% if @transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @transaction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="transaction_info_wrapper">
+    <div class="transaction_startup_logo">
+      <%= image_tag(@transaction.startup.startup_logo.url(:icon)) %>
+    </div>
+
+    <!-- transaction_startup_info -->
+    <div class="transaction_startup_info">
+      <div class="transaction_startup_name">
+        <%= @transaction.startup.startup_name %>
+      </div>
+      <div class="transaction_startup_location">
+        <%= @transaction.startup.city %>, <%= @transaction.startup.state %>
+      </div>
+    </div>
+    <div class="transaction_startup_amount">
+      <div class="donateAmount">
+        <%= select_tag :donate_amount, options_for_select(donation_amount_sel) %>
+      </div>
+      <div class="other_amount small_header">
+        Other Amount: $<%= text_field_tag :other_amount_field %>
+      </div>
+    </div>
+    <!-- END transaction_startup_info -->
+
+    <%= f.hidden_field :amount %>
+    <%= f.hidden_field :transaction_type %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :startup_id %>
+    <%= hidden_field_tag :stripe_card_token %>
+
+  </div>
+
+  <div class="transaction_total_wrapper">
+    Total: <span id="total_amount"></span>
+  </div>
+
+  <div class="transaction_submit_button_div">
+    <%= f.submit 'Donate' %>
+  </div>
+  <% end %>
+  <!-- END FORM -->
+
+</div>
+<!-- END transaction_wrapper -->
+
+

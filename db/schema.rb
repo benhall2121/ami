@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614195826) do
+ActiveRecord::Schema.define(:version => 20120625231808) do
 
   create_table "descriptions", :force => true do |t|
     t.string   "title"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(:version => 20120614195826) do
     t.datetime "startup_logo_updated_at"
     t.string   "username"
     t.boolean  "active",                    :default => false
+    t.integer  "donation_amount",           :default => 0
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.string   "amount"
+    t.string   "transaction_type"
+    t.integer  "user_id"
+    t.integer  "startup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "charge_id"
   end
 
   create_table "users", :force => true do |t|
@@ -82,6 +93,12 @@ ActiveRecord::Schema.define(:version => 20120614195826) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.boolean  "active",                 :default => true
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "stripe_customer_token"
+    t.string   "last_four_cc"
   end
 
 end

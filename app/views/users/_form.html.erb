@@ -1,4 +1,5 @@
-<%= form_for(@user) do |f| %>
+
+<%= form_for(@user, :html => { :multipart => true })  do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,6 +12,11 @@
     </div>
   <% end %>
 
+  <div>
+    Photo: <br/>
+    <%= image_tag @user.photo.url(:small), :style => 'vertical-align:middle; padding:5px; border:1px solid #ccc;'  %><br />
+    <%= f.file_field :photo %>
+  </div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
@@ -23,12 +29,19 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
-  <div class="field">
-    <%= f.label :user_type %><br />
-    <%= f.select :user_type, options_for_select([['User', 'User'], ['Contributor','Contributor']], @user.user_type) %>
-    <%= params[:user_type] %>
-  </div>
+
+  <% if is_admin? %>
+    <div class="field">
+      <%= f.label :user_type %><br />
+      <%= f.select :user_type, options_for_select([['User', 'User'], ['Contributor','Contributor']], @user.user_type) %>
+      <%= params[:user_type] %>
+    </div>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+
