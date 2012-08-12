@@ -1,20 +1,39 @@
 
+<div>
 
-<table class="transaction_table">
-  <tr class="header">
-    <td>Amount</td>
-    <td>Type</td>
-    <td>Startup Name</td>
-    <td>Date</td>
-  </tr>
+  <div class="left_column">
+    <div style="text-align:center;">
+      <%= image_tag @user.photo.url(:small), :style => 'vertical-align:middle; padding:5px; border:1px solid #ccc;'  %>
+      <%= @user.email %>
+    </div>
+  </div>
 
-  <% @transactions.each do |t| %>
-  <tr>
-    <td>$<%= t.amount %></td>
-    <td><%= t.transaction_type %></td>
-    <td><%= t.startup.startup_name %></td>
-    <td><%= t.created_at.strftime('%m/%d/%Y') %></td>
-  </tr>
-  <% end %>
+  <div class="right_column">
+    <div class="small_header transaction_table_small_header">
+      YOUR CONTRIBUTIONS
+    </div>
 
-</table>
+    <table class="transaction_table">
+      <% @transactions.each do |t| %>
+        <tr>
+          <td> <%= link_to image_tag(t.startup.startup_logo.url(:icon), :class => 'index_each_startup_logo_image'), t.startup %></td>
+          <td>
+            <div class="small_header"><%= link_to t.startup.startup_name, t.startup %></div>
+            <div class="transaction_details">Your Contribution</div>
+            <div class="transaction_details">$<%= t.amount %></div>
+          </td>
+          <td>
+            <div>&nbsp;</div>
+            <div class="transaction_details">Amount Requested / Raised</div>
+            <div class="transaction_details">$<%= t.startup.donation_amount %> / $<%= transaction_amount('donation', t.startup.id) %></div>
+          </td>
+          <td><%= link_to 'Additional Support', t.startup, :class => 'default_button donateButton' %></td>
+        </tr>
+        </div>
+      <% end %>
+
+    </table>
+  </div>
+</div>
+
+

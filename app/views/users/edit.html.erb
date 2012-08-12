@@ -8,7 +8,7 @@ $(document).ready(function(){
     setPage(page);
   }
 
-  $('.user_header_nav_div').click(function(){
+  $('.page_nav_link').click(function(){
     page_name = $(this).attr('id');
 	setPage(page_name);
   });
@@ -20,43 +20,44 @@ function setPage(page){
 
   if(page != '' && page != null){
   	$('#user_' + page).show();
-  	$('#' + page).addClass('selected');
+  	$('#' + page).addClass('page_nav_link_selected');
   }
 
   if($("div.user_pages:visible").length == 0){
   	$('#user_profile').show();
-  	$('#profile').addClass('selected');
+  	$('#profile').addClass('page_nav_link_selected');
   };
 }
 
 
 </script>
 
-<div class="page_header">
-  Profile
-</div>
 
-<div class="user_header_nav">
-  <div id="profile" class="user_header_nav_div selected">
-  	Profile
-  </div>
-  <div id="account" class="user_header_nav_div">
-  	Credit Card
-  </div>
-  <div id="transaction" class="user_header_nav_div">
-    Your Transactions
+<div class="page_nav_outer_wrapper">
+  <div class="page_nav_inner_wrapper main_width">
+    <div class="page_nav_title">
+      Profile
+    </div>
+    <div class="page_nav_links_wrapper">
+      <div class="page_nav_link page_nav_link_selected" id='transaction'>YOUR CONTRIBUTIONS</div>
+      <div class="page_nav_link", id='profile'>PROFILE</div>
+      <div class="page_nav_link", id='account'>CREDIT CARD</div>
+    </div>  
   </div>
 </div>
 
-<div id="user_profile" class="user_pages">
-  <%= render 'form' %>
+<div class="content main_width">
+  <div id="user_transaction" class="user_pages">
+    <%= render 'transaction_list' %>
+  </div>
+
+  <div id="user_profile" class="user_pages " style="display:none;">
+    <%= render 'form' %>
+  </div>
+
+  <div id="user_account" class="user_pages" style="display:none;">
+    <%= render 'account_form' %>
+  </div>
 </div>
 
-<div id="user_account" class="user_pages" style="display:none;">
-  <%= render 'account_form' %>
-</div>
-
-<div id="user_transaction" class="user_pages" style="display:none;">
-  <%= render 'transaction_list' %>
-</div>
 

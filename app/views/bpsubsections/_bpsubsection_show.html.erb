@@ -1,0 +1,13 @@
+
+<div class="description_wrapper">
+
+  <% if bpsubsection.title != '' %>
+  <div class="subsection_wrapper", id="bpsubsection_<%= bpsubsection.id %>">
+    <%= bpsubsection.title %>
+    <br />
+    <%= simple_format(bpsubsection.description) %>
+  </div>
+  <% end %>  
+
+</div>
+

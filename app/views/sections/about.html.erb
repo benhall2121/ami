@@ -1,7 +1,12 @@
-<div class="page_header">
-  <%= @section.page_title %>
+
+<div class="page_nav_outer_wrapper">
+  <div class="page_nav_inner_wrapper main_width">
+    <div class="page_nav_title">
+      <%= @section.page_title %>
+    </div>
+  </div>
 </div>
 
-<div class="page_content_wrapper">
+<div class="page_content_wrapper main_width">
   <%= simple_format(@section.content) %>
 </div>

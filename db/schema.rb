@@ -10,7 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120625231808) do
+ActiveRecord::Schema.define(:version => 20120811210818) do
+
+  create_table "bpsections", :force => true do |t|
+    t.string   "title"
+    t.integer  "startup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bpsubsections", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "bpsection_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "descriptions", :force => true do |t|
     t.string   "title"
@@ -69,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20120625231808) do
     t.string   "username"
     t.boolean  "active",                    :default => false
     t.integer  "donation_amount",           :default => 0
+    t.text     "busplandesc"
   end
 
   create_table "transactions", :force => true do |t|

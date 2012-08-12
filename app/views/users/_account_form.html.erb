@@ -43,12 +43,17 @@ account = {
 </script>
 
 <% if @user.stripe_customer_token.present? %>
-  <div>
+  <div class="page_content_wrapper">
     The Credit Card on file ends with: <%= @user.last_four_cc %>
   </div>
 <% else %>
   <!-- FORM -->
   <%= form_tag card_for_user_path, :id => 'user_form'  do |f| %>
+
+  
+  <div class="page_content_wrapper">
+
+
     <div class="field">
       <%= label_tag :card_number, "Credit Card Number" %>
       <%= text_field_tag :card_number, nil %>
@@ -68,10 +73,10 @@ account = {
     <div id="stripe_error">
       <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
     </div>
-
-    <div>
-      <%= submit_tag 'Save Credit Card' %>
-    </div>
+  </div>
+  <div class="actions submit_button_wrapper main_width">
+    <%= submit_tag 'Save Credit Card', :class => 'default_button donateButton' %>
+  </div>
   <% end %>
   <!-- END FORM -->
 <% end %>

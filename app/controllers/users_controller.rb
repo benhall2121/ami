@@ -52,7 +52,7 @@ class UsersController < ApplicationController
       @user = User.find(current_user.id)
     end
 
-    @transactions = @user.transactions.find(:all, :order => 'created_at desc')
+    @transactions = @user.transactions.find(:all, :select => ('startup_id, SUM(amount) as amount'), :order => 'created_at desc', :group => 'startup_id')
   end
 
   # POST /users

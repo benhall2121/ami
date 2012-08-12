@@ -1,0 +1,15 @@
+
+<div class="description_wrapper">
+
+  <% if bpsection.title != '' %>
+  <div class="description_title" id="bpsection_<%= bpsection.id %>">
+    <%= bpsection.title %>
+  </div>
+  <% end %>
+
+  <% for bpsubsection in bpsection.bpsubsections %>
+    <%= render "bpsubsections/bpsubsection_show", :bpsubsection => bpsubsection %>
+  <% end %>
+
+</div>
+

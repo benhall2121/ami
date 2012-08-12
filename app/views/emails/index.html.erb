@@ -1,30 +1,37 @@
-<div class="page_header">
-  Emails
+<div class="page_nav_outer_wrapper">
+  <div class="page_nav_inner_wrapper main_width">
+    <div class="page_nav_title">
+      Emails
+    </div>
+  </div>
 </div>
 
 
 
+<div class="page_content_wrapper main_width content">
 
-<% @emails.each do |email| %>
+<% if @emails.blank? %>
+  You currently have no emails
+<% else %>
+  <% @emails.each do |email| %>
 
-
-  
-  <div class="index_each_startup">
-    <div>
-      <span class="bold">Date:</span> <%= email.created_at %>
+    <div class="index_each_startup">
+      <div>
+        <span class="bold">Date:</span> <%= email.created_at %>
+      </div>
+      <div>
+        <span class="bold">From:</span> <%= email.from %>
+      </div>
+      <div>
+        <span class="bold">Subject:</span> <%= email.subject %>
+      </div>
+      <div>
+        <span class="bold">Message:</span><br/>
+        <%= email.message.gsub(/\n/, '<br/>').html_safe %>
+      </div>
     </div>
-    <div>
-      <span class="bold">From:</span> <%= email.from %>
-    </div>
-    <div>
-      <span class="bold">Subject:</span> <%= email.subject %>
-    </div>
-    <div>
-      <span class="bold">Message:</span><br/>
-      <%= email.message.gsub(/\n/, '<br/>').html_safe %>
-    </div>
-  </div>
 
-
+  <% end %>
 <% end %>
+</div>
 

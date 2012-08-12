@@ -1,0 +1,25 @@
+<%= form_for(@bpsection) do |f| %>
+  <% if @bpsection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bpsection.errors.count, "error") %> prohibited this bpsection from being saved:</h2>
+
+      <ul>
+      <% @bpsection.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :startup_id %><br />
+    <%= f.text_field :startup_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

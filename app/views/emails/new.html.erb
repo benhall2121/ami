@@ -1,12 +1,17 @@
 
-<div class="page_header">
-  <% if !@section.nil? %>
-    <%= @section.page_title %>
-  <% else %>
-  	Contact Us
-  <% end %>
+<div class="page_nav_outer_wrapper">
+  <div class="page_nav_inner_wrapper main_width">
+    <div class="page_nav_title">
+      <% if !@section.nil? %>
+        <%= @section.page_title %>
+      <% else %>
+  	    Contact Us
+      <% end %>
+    </div>
+  </div>
 </div>
 
+<div class="page_content_wrapper main_width">
 <% if !@section.nil? %>
   <div class="page_content_wrapper">
     <%= simple_format(@section.content) %>
@@ -14,4 +19,5 @@
 <% end %>
 
 <%= render 'form' %>
+</div>
 

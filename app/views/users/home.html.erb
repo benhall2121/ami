@@ -1,6 +1,12 @@
+<div class="page_nav_outer_wrapper">
+  <div class="page_nav_inner_wrapper main_width">
+    <div class="page_nav_title">
+      CROWD SPARK
+    </div>
+  </div>
+</div>
 
-
-<div class="page_wrapper">
+<div class="page_content_wrapper main_width">
   <div class="recent_startups_wrapper">
   	<div class="section_header">
   		RECENT STARTUPS
@@ -11,20 +17,23 @@
       </div>
     <% end %>
   </div>	
+
+</div>
+
+<div class="page_content_wrapper main_width">
   <div class="how_it_works_div">
-  	<div class="section_header">
-  		<% if !@section.page_title.nil? %>
+    <div class="section_header">
+      <% if !@section.page_title.nil? %>
         <%= @section.page_title %>
       <% else %>
         HOW IT WORKS
       <% end %>
-  	</div>
-  	<div>
-  		<% if !@section.page_title.nil? %>
+    </div>
+    <div>
+      <% if !@section.page_title.nil? %>
         <%= my_simple_format(@section.content) %>
       <% end %>
-  	</div>
+    </div>
   </div>
-
 </div>
 

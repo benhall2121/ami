@@ -1,0 +1,27 @@
+<h1>Listing bpsubsections</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Bpsection</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bpsubsections.each do |bpsubsection| %>
+  <tr>
+    <td><%= bpsubsection.title %></td>
+    <td><%= bpsubsection.description %></td>
+    <td><%= bpsubsection.bpsection_id %></td>
+    <td><%= link_to 'Show', bpsubsection %></td>
+    <td><%= link_to 'Edit', edit_bpsubsection_path(bpsubsection) %></td>
+    <td><%= link_to 'Destroy', bpsubsection, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bpsubsection', new_bpsubsection_path %>

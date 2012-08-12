@@ -36,6 +36,7 @@ class StartupsController < ApplicationController
 
 
     @descriptions = @startup.descriptions.find(:all)
+    @bpsections = @startup.bpsections.find(:all)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -50,6 +51,7 @@ class StartupsController < ApplicationController
     @users = User.find(:all, :conditions => ['user_type = "User"'])
 
     description = @startup.descriptions.build
+    bpsection = @startup.bpsections.build
 
     respond_to do |format|
       format.html # new.html.erb

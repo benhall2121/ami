@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @bpsubsection.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @bpsubsection.description %>
+</p>
+
+<p>
+  <b>Bpsection:</b>
+  <%= @bpsubsection.bpsection_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_bpsubsection_path(@bpsubsection) %> |
+<%= link_to 'Back', bpsubsections_path %>

@@ -1,5 +1,9 @@
 Ami::Application.routes.draw do
   
+  resources :bpsubsections
+
+  resources :bpsections
+
   resources :accounts
 
   resources :transactions

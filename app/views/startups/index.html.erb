@@ -1,7 +1,13 @@
-<div class="page_header">
-  Startups
+
+<div class="page_nav_outer_wrapper">
+  <div class="page_nav_inner_wrapper main_width">
+    <div class="page_nav_title">
+      INITIATIVES
+    </div>
+  </div>
 </div>
 
+<div class="page_content_wrapper main_width">
 <% if is_admin? %>
   <div class="new_wrapper">
     <%= link_to 'New Startup', new_startup_path %>
@@ -17,6 +23,7 @@
     <%= render 'startups' %>
   </div>
 <% end %>
+</div>
 
 
 

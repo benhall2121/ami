@@ -1,32 +1,44 @@
-<% if is_admin? %>
-  <%= link_to 'Edit', edit_startup_path(@startup) %> |
-  <%= link_to 'Delete', @startup, :confirm => 'Are you sure?', :method => :delete %>
-<% end %>
+<script type="text/javascript">
 
-<!-- **********  startup_wrapper ********** -->
-<div class="startup_wrapper">
-  <div class="startup_name_div">
-    <%= image_tag @startup.startup_logo.url(:secondIcon), :style => 'vertical-align:middle; padding:5px;'  %><%= @startup.startup_name %>
-  </div>
+  $(document).ready(function() {
+    checkSelectedTab('page_nav_link', '');
+  });
 
-  <!-- **********  startup_body_wrapper ********** -->
-  <div class="startup_body_wrapper">
-    <div class="startup_body_left">
-      
+</script>
 
-      <% for description in @startup.descriptions %>
-        <%= render "descriptions/description_show", :description => description %>
-      <% end %>
 
+<div class="page_nav_outer_wrapper">
+  <div class="page_nav_inner_wrapper main_width">
+    <div class="page_nav_title">
+      <%= image_tag @startup.startup_logo.url(:secondIcon), :style => 'vertical-align:middle; margin-right:20px;'  %><%= @startup.startup_name %>
     </div>
-    <div class="startup_body_right">
-      <div class="brief_description_details">
-        <%= @startup.brief_description %>
-      </div>
+    <div class="page_nav_links_wrapper">
+      <div class="page_nav_link page_nav_link_selected", id='profile'>Profile</div>
+      <div class="page_nav_link", id='businessPlan'>Business Plan</div>
+      <div class="page_nav_link" id='payroll'>Payroll</div>
+    </div>  
+  </div>
+</div>
+
+
+<div class="main_width content">
+  <% if is_admin? %>
+    <div class="admin_control_wrapper" style="font-size:12px;padding:5px;">
+      <%= link_to 'Edit', edit_startup_path(@startup) %> |
+      <%= link_to 'Delete', @startup, :confirm => 'Are you sure?', :method => :delete %>
+    </div>
+  <% end %>
+
+  
+  <!-- Profile Section -->
+  <div class="page_nav_link_content" id="page_nav_link_profile" style="display:none;">
+    <div class="left_column">
+      
       <div class="donation_raised_wrapper">
 
         <div class="percentage_display_wrapper">
-          <span class="percentage_display" id="percentage_display"><%= @percent_raised %>%</span> raised, <span id="amount_to_go"><%= number_to_currency(@amount_to_go, :precision => 2) %></span> to go
+         <span class="percentage_display" id="percentage_display">FUNDING</span>
+         <!-- <span class="percentage_display" id="percentage_display"><%= @percent_raised %>%</span> raised, <span id="amount_to_go"><%= number_to_currency(@amount_to_go, :precision => 2) %></span> to go -->
         </div>
 
         <!-- *****  donation_percentage_wrapper  ***** -->
@@ -43,35 +55,106 @@
           Total Raised: <span id="total_raised"><%= number_to_currency(@amount_raised, :precision => 2) %></span>
         </div>
 
-      </div>
-      <div class="donate_section">
-        <div class="small_header">
-          Amount to Donate:
+
+        <div class="donate_section">
+          <div class="small_header">
+            Amount to Donate:
+          </div>
+
+          <!-- *****  donate_wrapper  ***** -->
+          <div class="donate_wrapper">
+            <div class="donateAmount">
+              <%= select_tag :donate_amount, options_for_select(donation_amount_sel) %>
+            </div>
+            <div class="donateButton_div">
+              <% if !current_user.nil? %>
+                <%= link_to 'Donate', new_transaction_path(:transaction => {:transaction_type => 'donation', :user_id => current_user.id, :startup_id => @startup.id}), :class => 'default_button donateButton' %>
+              <% else %>
+                <%= link_to 'Donate', new_transaction_path(:transaction => {:transaction_type => 'donation', :startup_id => @startup.id}), :class => 'default_button donateButton' %>
+              <% end %>
+            </div>
+            <div class="other_amount small_header">
+              Other Amount: $<%= text_field_tag :other_amount_field %>
+            </div>
+            <%= hidden_field_tag :is_contributor, is_contributor? %>
+            <%= hidden_field_tag :startup_id, @startup.id %>
+          </div>
+          <!-- *****  END donate_wrapper  ***** -->
+
         </div>
 
-        <!-- *****  donate_wrapper  ***** -->
-        <div class="donate_wrapper">
-          <div class="donateAmount">
-            <%= select_tag :donate_amount, options_for_select(donation_amount_sel) %>
-          </div>
-          <div class="donateButton_div">
-            <% if !current_user.nil? %>
-              <%= link_to 'Donate', new_transaction_path(:transaction => {:transaction_type => 'donation', :user_id => current_user.id, :startup_id => @startup.id}), :class => 'default_button donateButton' %>
-            <% else %>
-              <%= link_to 'Donate', new_transaction_path(:transaction => {:transaction_type => 'donation', :startup_id => @startup.id}), :class => 'default_button donateButton' %>
-            <% end %>
-          </div>
-          <div class="other_amount small_header">
-            Other Amount: $<%= text_field_tag :other_amount_field %>
-          </div>
-          <%= hidden_field_tag :is_contributor, is_contributor? %>
-          <%= hidden_field_tag :startup_id, @startup.id %>
-        </div>
-        <!-- *****  END donate_wrapper  ***** -->
-
       </div>
+
+      <div class="brief_description_details">
+        <%= @startup.brief_description %>
+      </div>
+
+    </div>
+    <div class="right_column">
+    
+      <% for description in @startup.descriptions %>
+        <%= render "descriptions/description_show", :description => description %>
+      <% end %>
+
     </div>
   </div>
-  <!-- **********  END startup_body_wrapper ********** -->
+  <!-- END Profile Section -->
+
+
+
+
+  
+  <!-- Business Plan Section -->
+  <div class="page_nav_link_content" id="page_nav_link_businessPlan" style="display:none;">
+    <div class="left_column">
+      <div class="small_header">BUSINESS PLAN</div>
+      <div class="bp_navigation">
+        <% @bpsections.each do |sec| %>
+          <div class="small_header">
+            <%= link_to sec.title, '#bpsection_' + sec.id.to_s %>
+          </div>
+          <% sec.bpsubsections.each do |subsec| %>
+            <div class="small_header">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to subsec.title, '#bpsubsection_' + subsec.id.to_s %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="right_column">
+      <div class="small_header">BUSINESS PLAN</div>
+    
+      <div class="description_details">
+        <%= simple_format(@startup.busplandesc) %>
+      </div>
+
+      <% for bpsection in @bpsections %>
+        <%= render "bpsections/bpsection_show", :bpsection => bpsection %>
+      <% end %>
+
+    </div>
+  </div>
+  <!-- END Business Plan Section -->
+
+
+
+
+  <!-- Payroll Section -->
+  <div class="page_nav_link_content" id="page_nav_link_payroll" style="display:none;">
+    <div class="left_column">
+      <div class="small_header">PAYROLL</div>
+
+    </div>
+    <div class="right_column">
+      <div class="small_header">PAYROLL</div>
+   
+
+
+    </div>
+  </div>
+  <!-- END Payroll Section -->
+
+
 </div>
-<!-- **********  END startup_wrapper ********** -->
+
+

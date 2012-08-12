@@ -3,6 +3,10 @@
 
 $(document).ready(function() {
 	
+  $('.page_nav_link').click(function(){
+    checkSelectedTab('page_nav_link', $(this));
+  });
+
   //************************* FAQS  *************************
 
 	$('.faq_question').live('click', function(){
@@ -302,6 +306,20 @@ function formatPercentage(percent) {
 function calc_transaction_totals(){
   var total = $('#transaction_amount').val();
   $('#total_amount').html(formatCurrency(total));
+}
+
+function checkSelectedTab(class_name, wow){
+
+  $('.' + class_name).removeClass(class_name + '_selected');
+  $('.' + class_name + '_content').hide();
+  
+  if(wow == ''){
+    $('.' + class_name).first().addClass(class_name + '_selected');
+    $('.' + class_name + '_content').first().show();
+  } else {
+    wow.addClass(class_name + '_selected');
+    $('#' + class_name + '_' + wow.attr('id')).show();
+  }
 }
 
 

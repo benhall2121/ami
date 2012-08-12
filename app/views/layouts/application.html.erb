@@ -15,44 +15,48 @@
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tag %>
 
-  <link href='http://fonts.googleapis.com/css?family=Jura:400,300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  <!-- ##########  GOOGLE ANALYTICS  ########## -->
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2677869-22']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <!-- ##########  END GOOGLE ANALYTICS  ########## -->
 
 </head>
 <body>
 
 <div class="header_wrapper">
-  <div class="top_nav_container">
-    <div class="top_nav_wrapper">
-      <% if current_user.nil? %>
-        <%= link_to "LOGIN", log_in_path %> <%= link_to "SIGNUP", sign_up_path %> 
-      <% else %>
-        <%= link_to "LOGOUT", log_out_path %> 
-        <%= link_to "PROFILE", edit_user_path(current_user) %> 
-        <% if is_admin? %>
-          <%= link_to "ADMIN PANEL", admin_path %>
-        <% end %>
+  
+  <% if !current_user.nil? %>
+    <div class="user_profile_wrapper main_width">
+      <% if is_admin_or_contributor? %>
+        <%= link_to "YOUR PROFILE", edit_user_path(current_user) %> 
+      <% end %>
+      <% if is_admin? %>
+        | <%= link_to "ADMIN PANEL", admin_path %>
       <% end %>
     </div>
-  </div>
+  <% end %>
 
-  <div class="main_nav_wrapper">
-    <div class="logo_wrapper">
-      <%= link_to image_tag("yumyumLogo30.jpg"), root_path() %>
-    </div>
-   
-    <div class="main_nav_link_wrapper">
-      <%= link_to "Startups", startups_path %>
-      <%= link_to "Contributors", users_path(:user_type => 'Contributor') %>
-      <%= link_to "About", about_path %>
-      <%= link_to "Contact", new_email_path %>
-      <%= link_to "FAQ", faqs_path %>
-    </div>
-  </div>
-</div>
+  <%= link_to "ABOUT", about_path %>
+  <%= link_to "COHORT", users_path(:user_type => 'Contributor') %>
 
-<div class="notification_wrapper">
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <%= link_to image_tag("logo_cs50.jpg", :class => 'logo_cs_top'), root_path() %>
+
+  <%= link_to "INITIATIVES", startups_path %>
+  <% if current_user.nil? %>
+    <%= link_to "LOGIN", log_in_path %>
+  <% else %>
+    <%= link_to "LOGOUT", log_out_path %> 
   <% end %>
 </div>
 
@@ -62,11 +66,22 @@
 </div>
 
 <div class="footer_nav_wrapper">
-  <%= link_to "Home", root_path %>
-  <%= link_to "Startups", startups_path %>
-  <%= link_to "Contributors", users_path(:user_type => 'Contributor') %>
-  <%= link_to "About", about_path %>
-  <%= link_to "Contact", new_email_path %>
+
+  <%= link_to "ABOUT", about_path %>
+  <%= link_to "COHORT", users_path(:user_type => 'Contributor') %>
+
+
+  <%= link_to "INITIATIVES", startups_path %>
+
+  <%= link_to image_tag("logo_cs25.jpg", :class => 'logo_cs_top'), root_path() %>
+
+  <% if current_user.nil? %>
+    <%= link_to "LOGIN", log_in_path %>
+  <% else %>
+    <%= link_to "LOGOUT", log_out_path %> 
+  <% end %>
+
+  <%= link_to "CONTACT", new_email_path %>
   <%= link_to "FAQ", faqs_path %>
 </div>  
 

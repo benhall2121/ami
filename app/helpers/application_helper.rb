@@ -16,6 +16,14 @@ module ApplicationHelper
     end
   end 
 
+  def is_admin_or_contributor?
+    if is_contributor? || is_admin?
+      return true
+    else
+      return false
+    end
+  end
+
   def is_current_user(user)
     if !current_user.nil? && current_user.id == user.id
       return true

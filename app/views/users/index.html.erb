@@ -1,12 +1,18 @@
 
-<div class="page_header">
-  <% if !params[:user_type].nil? %>
-    <%= params[:user_type].pluralize %>
-  <% else %>
-    Users
-  <% end %>
+<div class="page_nav_outer_wrapper">
+  <div class="page_nav_inner_wrapper main_width">
+    <div class="page_nav_title">
+      <% if !params[:user_type].nil? %>
+        <%= params[:user_type].pluralize %>
+      <% else %>
+        Users
+      <% end %>
+    </div>
+  </div>
 </div>
 
+
+<div class="page_content_wrapper main_width">
 <% if is_admin? %>
   <div class="controls_wrapper">
     <%= link_to (!params[:user_type].nil? ? 'New ' + params[:user_type] : 'New User'), new_user_path %>
@@ -23,4 +29,4 @@
   <% end %>
 
 </div>
-
+</div>

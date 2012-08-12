@@ -16,8 +16,13 @@ $(document).ready(function() {
   });
       
   $('.startup_name').trigger('keyup');  
+
+  $(document).ready(function() {
+    checkSelectedTab('page_nav_link', '');
+  });
 });
 </script>
+
 
 <%= form_for(@startup, :html => { :multipart => true }) do |f| %>
   <% if @startup.errors.any? %>
@@ -67,41 +72,158 @@ $(document).ready(function() {
 <!-- **********  END startup_main_info_wrapper ********** -->
 
 
-<!-- **********  startup_wrapper ********** -->
-<div class="startup_wrapper">
-  <div class="startup_name_div">
+
+
+
+
+
+
+
+
+
+<div class="main_width content">
+
+  <!-- Profile Section -->
+  <div class="page_nav_link_content" id="page_nav_link_profile" style="display:none;">
     
-  </div>
+    <!-- LEFT COLUMN PROFILE -->
+    <div class="left_column">
+      
+      <div class="donation_raised_wrapper">
 
-  <!-- **********  startup_body_wrapper ********** -->
-  <div class="startup_body_wrapper">
-    <div class="startup_body_left">
-      <%= f.fields_for :descriptions do |builder| %>
-        <%= render "descriptions/description_fields", :f => builder %>
-      <% end %>
+        <div class="percentage_display_wrapper">
+         <span class="percentage_display" id="percentage_display">FUNDING</span>
+         <!-- <span class="percentage_display" id="percentage_display"><%= @percent_raised %>%</span> raised, <span id="amount_to_go"><%= number_to_currency(@amount_to_go, :precision => 2) %></span> to go -->
+        </div>
 
-  <div>
-    <%= link_to_add_fields "Add Description", f, :descriptions %>
-  </div>
+        <div class="donation_raised_wrapper">
+          Amount to be Raised:<br />
+          $<%= f.text_field :donation_amount %>
+        </div>
 
+      </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  
-    </div>
-    <div class="startup_body_right">
       <div class="brief_description_details">
         Brief Description of Company:<br />
         <%= f.text_area :brief_description %>
       </div>
-      <div class="donation_raised_wrapper">
-        Amount to be Raised:<br />
-        $<%= f.text_field :donation_amount %>
-      </div>
+
     </div>
+    <!-- END LEFT COLUMN PROFILE -->
+
+    <!-- RIGHT COLUMN PROFILE -->
+    <div class="right_column">
+    
+
+        <%= f.fields_for :descriptions do |builder| %>
+          <%= render "descriptions/description_fields", :f => builder %>
+        <% end %>
+
+      <div>
+        <%= link_to_add_fields "Add Description", f, :descriptions %>
+      </div>
+    </div>  
+    <!-- END RIGHT COLUMN PROFILE -->
+
   </div>
-  <!-- **********  END startup_body_wrapper ********** -->
+  <!-- END Profile Section -->
+
+
+  
+  <!-- Business Plan Section -->
+  <div class="page_nav_link_content" id="page_nav_link_businessPlan" style="display:none;">
+    
+    <!-- LEFT COLUMN BUSINESS PLAN -->
+    <div class="left_column">
+      <div class="small_header">
+        BUSINESS PLAN
+      </div>
+      
+    </div>
+    <!-- END LEFT COLUMN BUSINESS PLAN -->
+
+    <!-- RIGHT COLUMN BUSINESS PLAN -->
+    <div class="right_column">
+      <div class="small_header">
+        BUSINESS PLAN
+      </div>
+
+      <div class="description_details">
+        Business Plan Description:<br />
+        <%= f.text_area :busplandesc %>
+      </div>
+
+       <%= f.fields_for :bpsections do |builder| %>
+          <%= render "bpsections/bpsection_fields", :f => builder %>
+        <% end %>
+
+      <div>
+        <%= link_to_add_fields "Add Section", f, :bpsections %>
+      </div>
+      
+    </div>
+    <!-- END RIGHT COLUMN BUSINESS PLAN -->
+    
+
+  </div>
+  <!-- END Business Plan Section -->
+
+
+
+
+  <!-- Payroll Section -->
+  <div class="page_nav_link_content" id="page_nav_link_payroll" style="display:none;">
+    
+    <!-- LEFT COLUMN PAYROLL -->
+    <div class="left_column">
+      <div class="small_header">
+        PAYROLL
+      </div>
+
+    </div>
+    <!-- END LEFT COLUMN PAYROLL -->
+
+    <!-- RIGHT COLUMN PAYROLL -->
+    <div class="right_column">
+      <div class="small_header">
+        PAYROLL
+      </div>
+
+    </div>
+    <!-- END RIGHT COLUMN PAYROLL -->
+    
+
+  </div>
+  <!-- END Payroll Section -->
+
+
+
+
 </div>
-<!-- **********  END startup_wrapper ********** -->
+
+<div class="actions submit_button_wrapper main_width">
+  <%= f.submit 'Save', :class => 'default_button donateButton' %>
+</div>
+
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
