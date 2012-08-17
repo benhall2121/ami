@@ -45756,3 +45756,36 @@ Started GET "/" for 127.0.0.1 at Sun Aug 12 03:14:47 -0700 2012
   [1m[35mSection Load (0.4ms)[0m  SELECT `sections`.* FROM `sections` WHERE (page_type = 'how_it_works') ORDER BY created_at desc LIMIT 1
 Rendered users/home.html.erb within layouts/application (34.7ms)
 Completed 200 OK in 60ms (Views: 40.3ms | ActiveRecord: 0.8ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/Ben/Desktop/Work/SideWork/ami/config/environment.rb:5)
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-17 15:16:12 -0700
+  Processing by UsersController#home as HTML
+  [1m[36mStartup Load (77.0ms)[0m  [1mSELECT `startups`.* FROM `startups` LIMIT 20[0m
+  [1m[35mSection Load (126.7ms)[0m  SELECT `sections`.* FROM `sections` WHERE (page_type = 'how_it_works') ORDER BY created_at desc LIMIT 1
+Rendered users/home.html.erb within layouts/application (316.6ms)
+Completed 200 OK in 664ms (Views: 374.5ms | ActiveRecord: 203.7ms)
+
+
+Started GET "/log_in" for 127.0.0.1 at 2012-08-17 15:16:18 -0700
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 48ms (Views: 47.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2012-08-17 15:16:26 -0700
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TWh+fFxChp9IoNYgp7V6E0Sy2AAr5OT7ghYpFYZkLEI=", "email"=>"benhall2121@yahoo.com", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[36mSQL (113.6ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`email` = 'benhall2121@yahoo.com' LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 431ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-17 15:16:26 -0700
+  Processing by UsersController#home as HTML
+  [1m[36mStartup Load (0.4ms)[0m  [1mSELECT `startups`.* FROM `startups` LIMIT 20[0m
+  [1m[35mSection Load (0.4ms)[0m  SELECT `sections`.* FROM `sections` WHERE (page_type = 'how_it_works') ORDER BY created_at desc LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`auth_token` = 'aaOgRlnO9eYdvgmuyOhNZA==' LIMIT 1[0m
+Rendered users/home.html.erb within layouts/application (168.6ms)
+Completed 200 OK in 191ms (Views: 172.6ms | ActiveRecord: 1.2ms)

@@ -2,6 +2,7 @@
 server "benerino.com", :app, :web, :db, :primary => true
 
 set :user, 'demo'
+set :password, '212134'
 set :keep_releases, 3 
 set :repository,  "git@github.com:benhall2121/ami.git" # replace neerajdotname with your github username
 set :use_sudo, false

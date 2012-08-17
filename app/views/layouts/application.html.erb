@@ -58,6 +58,15 @@
   <% else %>
     <%= link_to "LOGOUT", log_out_path %> 
   <% end %>
+
+  <% if !flash.nil? %>
+    <div class="flash_wrapper">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+    </div>
+  <% end %>
+
 </div>
 
 <div class="main_wrapper">
